@@ -1114,6 +1114,37 @@ h1 span {
     display: block;
   }
 
+  .site-header.is-nav-morphing .nav-shell {
+    transition:
+      border-color 2s ease-in-out,
+      background 2s ease-in-out,
+      box-shadow 2s ease-in-out;
+    will-change: transform;
+  }
+
+  .site-header.is-nav-morphing .nav-fix,
+  .site-header.is-nav-morphing .nav-scroll {
+    pointer-events: none;
+    will-change: opacity;
+  }
+
+  .site-header.is-nav-morphing[data-nav-type="scroll"][data-nav-from="fix"] .nav-fix {
+    display: flex;
+    position: absolute;
+    inset: 8px 32px;
+    width: auto;
+  }
+
+  .site-header.is-nav-morphing[data-nav-type="fix"][data-nav-from="scroll"] .nav-scroll {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    width: max-content;
+    transform: translate(-50%, -50%);
+  }
+
   .nav-toggle {
     display: none;
   }

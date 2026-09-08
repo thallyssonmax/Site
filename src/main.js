@@ -6,26 +6,60 @@ const siteHeader = document.querySelector(".site-header");
 const navShell = document.querySelector(".nav-shell");
 const navToggle = document.querySelector(".nav-toggle");
 const navMenuPanel = document.querySelector(".nav-scroll");
+const navFixPanel = document.querySelector(".nav-fix");
+const navScrollPanel = document.querySelector(".nav-scroll");
 const scrollThreshold = 150;
+const navTransition = { duration: 2, easing: "ease-in-out" };
 let currentNavType = siteHeader?.dataset.navType || "fix";
+let navMorphReset;
 
 function updateNavigationType() {
   if (!siteHeader || siteHeader.dataset.navType === "project") return;
   const nextNavType = window.scrollY > scrollThreshold ? "scroll" : "fix";
   if (nextNavType === currentNavType) return;
 
+  const shouldMorphNav = !prefersReducedMotion && navShell && window.matchMedia("(min-width: 981px)").matches;
+  const firstRect = shouldMorphNav ? navShell.getBoundingClientRect() : null;
+  const outgoingPanel = currentNavType === "fix" ? navFixPanel : navScrollPanel;
+  const incomingPanel = nextNavType === "fix" ? navFixPanel : navScrollPanel;
+
+  clearTimeout(navMorphReset);
+  siteHeader.classList.toggle("is-nav-morphing", Boolean(shouldMorphNav));
+  if (shouldMorphNav) {
+    siteHeader.dataset.navFrom = currentNavType;
+  } else {
+    delete siteHeader.dataset.navFrom;
+  }
   siteHeader.dataset.navType = nextNavType;
 
-  if (!prefersReducedMotion && navShell) {
+  if (shouldMorphNav && firstRect) {
+    const lastRect = navShell.getBoundingClientRect();
+    const deltaX = firstRect.left + firstRect.width / 2 - (lastRect.left + lastRect.width / 2);
+    const deltaY = firstRect.top + firstRect.height / 2 - (lastRect.top + lastRect.height / 2);
+
     animate(
       navShell,
       {
-        opacity: [0.92, 1],
-        y: nextNavType === "scroll" ? [-4, 0] : [4, 0],
-        scale: nextNavType === "scroll" ? [0.985, 1] : [1.01, 1],
+        x: [deltaX, 0],
+        y: [deltaY, 0],
+        scaleX: [firstRect.width / lastRect.width, 1],
+        scaleY: [firstRect.height / lastRect.height, 1],
       },
-      { duration: 2, easing: [0.16, 1, 0.3, 1] },
+      navTransition,
     );
+
+    if (outgoingPanel && incomingPanel) {
+      animate(outgoingPanel, { opacity: [1, 0] }, navTransition);
+      animate(incomingPanel, { opacity: [0, 1] }, navTransition);
+    }
+
+    navMorphReset = window.setTimeout(() => {
+      siteHeader.classList.remove("is-nav-morphing");
+      delete siteHeader.dataset.navFrom;
+      outgoingPanel?.removeAttribute("style");
+      incomingPanel?.removeAttribute("style");
+      navShell.removeAttribute("style");
+    }, navTransition.duration * 1000);
   }
 
   currentNavType = nextNavType;
