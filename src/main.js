@@ -8,6 +8,12 @@ const navMenuPanel = document.querySelector(".nav-scroll");
 const scrollThreshold = 150;
 let currentNavType = siteHeader?.dataset.navType || "fix";
 
+document.querySelectorAll(".ambient-video").forEach((video) => {
+  video.preload = "auto";
+  video.load();
+  video.play().catch(() => {});
+});
+
 function updateNavigationType() {
   if (!siteHeader || siteHeader.dataset.navType === "project") return;
   const nextNavType = window.scrollY > scrollThreshold ? "scroll" : "fix";
