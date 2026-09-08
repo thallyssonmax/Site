@@ -375,11 +375,22 @@ main {
 }
 
 .availability span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 12px;
   width: 12px;
   height: 12px;
   border-radius: 50%;
+  background: #2d2117;
+}
+
+.availability span::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
   background: var(--contrast);
-  box-shadow: 0 0 0 4px rgba(255, 156, 75, 0.18), 0 0 14px rgba(255, 156, 75, 0.8);
 }
 
 h1,
