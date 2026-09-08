@@ -1059,30 +1059,6 @@ h1 span {
     inset: 32px 0 auto;
   }
 
-  .nav-fix,
-  .nav-scroll {
-    position: absolute;
-    inset: 8px 32px;
-  }
-
-  .nav-fix {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    pointer-events: auto;
-  }
-
-  .nav-scroll {
-    top: 0;
-    right: auto;
-    bottom: auto;
-    left: 50%;
-    display: flex;
-    height: 56px;
-    opacity: 0;
-    transform: translateX(-50%) translateY(-6px) scale(0.96);
-    pointer-events: none;
-  }
-
   .site-header[data-nav-type="fix"] .nav-shell {
     width: min(1740px, calc(100vw - 32px));
     padding: 8px 32px;
@@ -1092,7 +1068,7 @@ h1 span {
   }
 
   .site-header[data-nav-type="scroll"] .nav-shell {
-    width: min(640px, calc(100vw - 32px));
+    width: auto;
     padding: 0;
     border: 0;
     background: transparent;
@@ -1105,12 +1081,15 @@ h1 span {
   }
 
   .site-header[data-nav-type="scroll"] .nav-fix {
-    opacity: 0;
-    transform: translateY(-6px) scale(0.985);
-    pointer-events: none;
+    display: none;
   }
 
   .site-header[data-nav-type="scroll"] .nav-scroll {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: auto;
+    height: 56px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -1118,9 +1097,6 @@ h1 span {
     gap: 24px;
     padding: 8px 12px 8px 24px;
     border-radius: 28px;
-    opacity: 1;
-    transform: translateX(-50%) translateY(0) scale(1);
-    pointer-events: auto;
   }
 
   .site-header[data-nav-type="scroll"] .nav-links-scroll {
