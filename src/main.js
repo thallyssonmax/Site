@@ -2,21 +2,31 @@ import { animate, inView, stagger } from "motion";
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+const siteHeader = document.querySelector(".site-header");
 const navToggle = document.querySelector(".nav-toggle");
-const navLinks = document.querySelector(".nav-links");
+const navMenuPanel = document.querySelector(".nav-scroll");
+const scrollThreshold = 150;
+
+function updateNavigationType() {
+  if (!siteHeader || siteHeader.dataset.navType === "project") return;
+  siteHeader.dataset.navType = window.scrollY > scrollThreshold ? "scroll" : "fix";
+}
 
 navToggle?.addEventListener("click", () => {
   const isOpen = navToggle.getAttribute("aria-expanded") === "true";
   navToggle.setAttribute("aria-expanded", String(!isOpen));
-  navLinks?.classList.toggle("is-open", !isOpen);
+  navMenuPanel?.classList.toggle("is-open", !isOpen);
 });
 
-document.querySelectorAll(".nav-links a").forEach((link) => {
+document.querySelectorAll(".nav-links a, .nav-contact").forEach((link) => {
   link.addEventListener("click", () => {
     navToggle?.setAttribute("aria-expanded", "false");
-    navLinks?.classList.remove("is-open");
+    navMenuPanel?.classList.remove("is-open");
   });
 });
+
+window.addEventListener("scroll", updateNavigationType, { passive: true });
+updateNavigationType();
 
 const chips = document.querySelectorAll("[data-filter]");
 const projects = document.querySelectorAll(".project-card");

@@ -43,22 +43,40 @@
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <header class="site-header" data-motion>
+    <header class="site-header" data-nav-type="fix" data-motion>
       <nav class="nav-shell" aria-label="Navegação principal">
-        <a class="brand" href="#inicio" aria-label="Thallysson Makcyel">
-          <img src="/assets/about/thallysson-hero.jpg" alt="" width="36" height="36" />
-          <span>Thallysson<br />Makcyel</span>
-        </a>
+        <div class="nav-fix" data-nav-panel="fix">
+          <a class="brand" href="#inicio" aria-label="Thallysson Makcyel">
+            <img src="/assets/about/thallysson-hero.jpg" alt="" width="36" height="36" />
+            <span>Thallysson<br />Makcyel</span>
+          </a>
+          <div class="nav-links nav-links-fix" aria-label="Seções do portfólio">
+            <a href="#sobre">Sobre</a>
+            <a href="#projetos">Projetos</a>
+            <a href="#servicos">Serviços</a>
+            <a href="#processo">Processo</a>
+            <a href="#depoimentos">Depoimentos</a>
+          </div>
+        </div>
+        <div class="nav-scroll" data-nav-panel="scroll">
+          <div class="nav-links nav-links-scroll" id="nav-links">
+            <a href="#inicio">Início</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#projetos">Projetos</a>
+            <a href="#servicos">Serviços</a>
+            <a href="#processo">Processo</a>
+            <a href="#depoimentos">Depoimentos</a>
+          </div>
+          <span class="nav-divider" aria-hidden="true"></span>
+          <a class="nav-contact" href="https://wa.me/5538991308550" target="_blank" rel="noreferrer">
+            <img src="/assets/about/thallysson-hero.jpg" alt="" width="28" height="28" />
+            Contato
+          </a>
+        </div>
+        <a class="nav-project-back" href="#projetos" aria-label="Voltar para projetos">←</a>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">
           Menu
         </button>
-        <div class="nav-links" id="nav-links">
-          <a href="#sobre">Sobre</a>
-          <a href="#projetos">Projetos</a>
-          <a href="#servicos">Serviços</a>
-          <a href="#processo">Processo</a>
-          <a href="#depoimentos">Depoimentos</a>
-        </div>
       </nav>
     </header>
 
