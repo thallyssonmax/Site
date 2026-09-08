@@ -121,11 +121,11 @@ main {
   pointer-events: auto;
   transform-origin: top center;
   transition:
-    width 2s ease-in-out,
-    padding 2s ease-in-out,
-    border-color 2s ease-in-out,
-    background 2s ease-in-out,
-    box-shadow 2s ease-in-out;
+    width 0.5s ease-in-out,
+    padding 0.5s ease-in-out,
+    border-color 0.5s ease-in-out,
+    background 0.5s ease-in-out,
+    box-shadow 0.5s ease-in-out;
 }
 
 .nav-fix,
@@ -1070,8 +1070,8 @@ h1 span {
     position: absolute;
     inset: 0;
     transition:
-      opacity 1.2s ease-in-out,
-      transform 2s ease-in-out;
+      opacity 0.35s ease-in-out,
+      transform 0.5s ease-in-out;
     will-change: opacity, transform;
   }
 
