@@ -718,6 +718,22 @@ h1 span {
   letter-spacing: -0.2px;
 }
 
+.chip {
+  width: 142px;
+  height: 36px;
+  min-height: 36px;
+  padding: 0 16px;
+  border-color: var(--border-light-2);
+  background: var(--white);
+  color: var(--black);
+  font-weight: 400;
+  box-shadow: inset 0 0 4px rgba(84, 84, 84, 0.7);
+}
+
+.chip:hover {
+  background: var(--white-2);
+}
+
 .small-button {
   width: 142px;
   height: 36px;
@@ -734,6 +750,7 @@ h1 span {
 .chip.is-active {
   color: var(--white);
   background: var(--black-2);
+  border-color: var(--border-light-2);
 }
 
 .project-grid {
