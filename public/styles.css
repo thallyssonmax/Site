@@ -391,6 +391,20 @@ main {
   height: 6px;
   border-radius: 50%;
   background: var(--contrast);
+  animation: availability-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes availability-pulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(0.82);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 h1,
