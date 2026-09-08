@@ -719,7 +719,6 @@ h1 span {
 }
 
 .chip {
-  width: 142px;
   height: 36px;
   min-height: 36px;
   padding: 0 16px;
@@ -735,7 +734,6 @@ h1 span {
 }
 
 .small-button {
-  width: 142px;
   height: 36px;
   min-height: 36px;
   padding: 0 16px;
