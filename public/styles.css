@@ -1080,9 +1080,8 @@ h1 span {
   }
 
   .nav-scroll {
-    inset: 8px 12px 8px 24px;
-    width: auto;
-    height: auto;
+    width: 100%;
+    height: 56px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -1104,7 +1103,7 @@ h1 span {
 
   .site-header[data-nav-type="scroll"] .nav-shell {
     width: min(674px, calc(100vw - 32px));
-    padding: 0;
+    padding: 8px 12px 8px 24px;
     border-color: var(--black-3);
     background: rgba(16, 16, 16, 0.9);
     box-shadow: inset 0 0 4px rgba(255, 255, 255, 0.28), 0 16px 32px rgba(0, 0, 0, 0.5);
@@ -1134,6 +1133,10 @@ h1 span {
   }
 
   .site-header[data-nav-type="scroll"] .nav-scroll {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: 40px;
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
