@@ -313,6 +313,7 @@ main {
   height: 100%;
   object-fit: cover;
   opacity: 0.92;
+  filter: grayscale(1) saturate(0) contrast(1.08);
   pointer-events: none;
 }
 
