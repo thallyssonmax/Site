@@ -3,13 +3,32 @@ import { animate, inView, stagger } from "motion";
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const siteHeader = document.querySelector(".site-header");
+const navShell = document.querySelector(".nav-shell");
 const navToggle = document.querySelector(".nav-toggle");
 const navMenuPanel = document.querySelector(".nav-scroll");
 const scrollThreshold = 150;
+let currentNavType = siteHeader?.dataset.navType || "fix";
 
 function updateNavigationType() {
   if (!siteHeader || siteHeader.dataset.navType === "project") return;
-  siteHeader.dataset.navType = window.scrollY > scrollThreshold ? "scroll" : "fix";
+  const nextNavType = window.scrollY > scrollThreshold ? "scroll" : "fix";
+  if (nextNavType === currentNavType) return;
+
+  siteHeader.dataset.navType = nextNavType;
+
+  if (!prefersReducedMotion && navShell) {
+    animate(
+      navShell,
+      {
+        opacity: [0.92, 1],
+        y: nextNavType === "scroll" ? [-4, 0] : [4, 0],
+        scale: nextNavType === "scroll" ? [0.985, 1] : [1.01, 1],
+      },
+      { duration: 0.38, easing: [0.22, 1, 0.36, 1] },
+    );
+  }
+
+  currentNavType = nextNavType;
 }
 
 navToggle?.addEventListener("click", () => {
