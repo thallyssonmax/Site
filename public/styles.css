@@ -49,6 +49,7 @@
 html {
   scroll-behavior: smooth;
   background: var(--white);
+  font-family: var(--font-sans);
 }
 
 body {
@@ -61,7 +62,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-body,
 button,
 a {
   font: inherit;
@@ -266,7 +266,7 @@ blockquote {
 h1 {
   font-size: clamp(52px, 9vw, 82px);
   line-height: 0.95;
-  font-weight: 590;
+  font-weight: 500;
   letter-spacing: -1px;
 }
 
@@ -454,7 +454,7 @@ h1 span {
   color: var(--black-2);
   font-size: clamp(42px, 6vw, 64px);
   line-height: 0.95;
-  font-weight: 590;
+  font-weight: 500;
   letter-spacing: -1px;
 }
 
@@ -893,7 +893,7 @@ h1 span {
   color: var(--white);
   font-size: clamp(44px, 7vw, 72px);
   line-height: 1;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: -1px;
 }
 
