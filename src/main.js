@@ -24,7 +24,7 @@ function updateNavigationType() {
         y: nextNavType === "scroll" ? [-4, 0] : [4, 0],
         scale: nextNavType === "scroll" ? [0.985, 1] : [1.01, 1],
       },
-      { duration: 0.72, easing: [0.16, 1, 0.3, 1] },
+      { duration: 1.3, easing: [0.16, 1, 0.3, 1] },
     );
   }
 
