@@ -166,24 +166,15 @@ main {
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
   height: 36px;
-  min-width: 127px;
+  width: 127px;
+  flex: 0 0 127px;
 }
 
 .brand img {
-  width: 36px;
+  width: 127px;
   height: 36px;
   object-fit: cover;
-  border: 1px solid var(--border-light);
-  border-radius: 50%;
-}
-
-.brand span {
-  color: var(--white);
-  font-size: 12px;
-  line-height: 12px;
-  font-weight: 700;
 }
 
 .nav-links {

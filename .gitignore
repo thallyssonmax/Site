@@ -4,4 +4,5 @@ dist/
 .DS_Store
 *.log
 /Assets/
+/Personal assets/
 /Reference images/
