@@ -689,6 +689,10 @@ h1 span {
   letter-spacing: -2.34px;
 }
 
+.about .section-heading {
+  gap: 0;
+}
+
 .about-photo {
   width: min(357px, 100%);
   margin: 0;
@@ -696,12 +700,11 @@ h1 span {
   border: 1px solid var(--border-light);
   border-radius: var(--radius-card);
   background: var(--white-2);
-  box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.7);
 }
 
 .about-photo img {
   width: 100%;
-  aspect-ratio: 357 / 370;
+  height: 370px;
   object-fit: cover;
 }
 
