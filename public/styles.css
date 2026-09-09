@@ -67,12 +67,16 @@ body {
   background: var(--white);
   letter-spacing: 0;
   text-rendering: optimizeLegibility;
+  user-select: none;
   -webkit-font-smoothing: antialiased;
+  -webkit-user-select: none;
 }
 
 button,
 a {
   font: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
 a {
@@ -80,15 +84,34 @@ a {
   text-decoration: none;
 }
 
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--contrast);
+  outline-offset: 4px;
+}
+
+.brand,
+.nav-links a,
+.nav-contact,
+.button,
+.small-button,
+.chip,
+.project-preview,
+.carousel-controls button,
+.nav-toggle {
+  cursor: pointer;
+}
+
 img,
 video {
   display: block;
   max-width: 100%;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 button {
   border: 0;
-  cursor: pointer;
 }
 
 main {

@@ -45,7 +45,11 @@ const projects = document.querySelectorAll(".project-card");
 chips.forEach((chip) => {
   chip.addEventListener("click", () => {
     const filter = chip.dataset.filter;
-    chips.forEach((item) => item.classList.toggle("is-active", item === chip));
+    chips.forEach((item) => {
+      const isActive = item === chip;
+      item.classList.toggle("is-active", isActive);
+      item.setAttribute("aria-pressed", String(isActive));
+    });
     projects.forEach((project) => {
       const visible = filter === "all" || project.dataset.category === filter;
       project.hidden = !visible;
