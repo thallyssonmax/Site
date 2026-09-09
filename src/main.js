@@ -93,10 +93,19 @@ const track = document.querySelector(".testimonial-track");
 const dots = document.querySelectorAll(".carousel-dots span");
 const carouselPrevButton = document.querySelector("[data-carousel='prev']");
 const carouselNextButton = document.querySelector("[data-carousel='next']");
+const mobileCarouselQuery = window.matchMedia("(max-width: 640px)");
 let carouselIndex = 0;
 
 function updateCarousel(direction = 1) {
   if (!track || !viewport) return;
+
+  if (mobileCarouselQuery.matches) {
+    track.style.transform = "";
+    if (carouselPrevButton) carouselPrevButton.disabled = false;
+    if (carouselNextButton) carouselNextButton.disabled = false;
+    return;
+  }
+
   const firstCard = track.querySelector(".testimonial-card");
   const cardWidth = firstCard ? firstCard.getBoundingClientRect().width + 16 : 416;
   const visibleCards = Math.max(1, Math.floor(viewport.clientWidth / cardWidth));
@@ -112,6 +121,7 @@ function updateCarousel(direction = 1) {
 carouselPrevButton?.addEventListener("click", () => updateCarousel(-1));
 carouselNextButton?.addEventListener("click", () => updateCarousel(1));
 window.addEventListener("resize", () => updateCarousel(0));
+mobileCarouselQuery.addEventListener("change", () => updateCarousel(0));
 updateCarousel(0);
 
 if (!prefersReducedMotion) {
