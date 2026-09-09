@@ -601,6 +601,7 @@ h1 span {
 }
 
 .experience {
+  width: 134px;
   display: flex;
   flex-direction: column;
   color: var(--border-light);
