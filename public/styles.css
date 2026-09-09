@@ -390,6 +390,17 @@ main {
   pointer-events: none;
 }
 
+.hero .mesh-glow {
+  left: -177px;
+  top: -65.25px;
+  width: 1254.12px;
+  height: 638.5px;
+  transform: none;
+  background: rgba(0, 0, 0, 0.4);
+  filter: blur(123.98px);
+  opacity: 1;
+}
+
 .hero {
   min-height: 780px;
   height: clamp(760px, 86vh, 860px);
