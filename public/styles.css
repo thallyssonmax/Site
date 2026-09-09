@@ -962,6 +962,7 @@ h1 span {
 .service-item h3 {
   margin-top: 20px;
   color: var(--black-2);
+  font-weight: 600;
   font-size: 18px;
   line-height: 18px;
   letter-spacing: -0.44px;
