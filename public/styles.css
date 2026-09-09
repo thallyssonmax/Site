@@ -271,6 +271,11 @@ main {
   line-height: 14px;
   letter-spacing: -0.2px;
   box-shadow: inset 0 0 4px rgba(84, 84, 84, 0.7);
+  transition: border-color 180ms ease, box-shadow 180ms ease, background 180ms ease, color 180ms ease;
+}
+
+.nav-contact:hover {
+  background: var(--border-light-2);
 }
 
 .nav-contact img {
