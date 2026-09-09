@@ -695,7 +695,7 @@ h1 span {
 
 .about-photo {
   width: min(357px, 100%);
-  margin: 0;
+  margin: 32px 0 0;
   overflow: hidden;
   border: 1px solid var(--border-light);
   border-radius: var(--radius-card);
