@@ -401,6 +401,17 @@ main {
   opacity: 1;
 }
 
+.final-cta .mesh-glow {
+  left: 414px;
+  top: 108.6px;
+  width: 912px;
+  height: 464.32px;
+  transform: none;
+  background: rgba(0, 0, 0, 0.4);
+  filter: blur(90.16px);
+  opacity: 1;
+}
+
 .hero {
   min-height: 780px;
   height: clamp(760px, 86vh, 860px);
