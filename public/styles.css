@@ -1003,6 +1003,10 @@ h1 span {
   top: 128px;
 }
 
+.process .sticky-copy {
+  gap: 0;
+}
+
 .steps-list {
   border-top: 1px solid var(--border-light);
 }
