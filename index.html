@@ -162,7 +162,7 @@
               <button class="chip" type="button" data-filter="web" aria-pressed="false">Web Design</button>
             </div>
           </div>
-          <div class="project-grid" data-motion>
+          <div class="project-grid" id="project-grid" data-motion>
             <article class="project-card" data-category="product">
               <a class="project-preview" href="#" aria-label="Ver projeto Expandindo o produto">
                 <img src="/assets/logos/frenet.jfif" alt="" width="72" height="72" loading="lazy" />
@@ -188,7 +188,9 @@
               <div class="project-info"><div><h3>Do conceito à experiência digital web</h3><p>Case de estudo · Website</p></div><span aria-hidden="true">↗</span></div>
             </article>
           </div>
-          <div class="center-action"><a class="small-button" href="#contato">Ver mais</a></div>
+          <div class="center-action" data-load-more-wrap>
+            <button class="small-button" type="button" data-load-more aria-controls="project-grid">Ver mais</button>
+          </div>
         </div>
       </section>
 

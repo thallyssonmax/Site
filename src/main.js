@@ -40,29 +40,59 @@ window.addEventListener("scroll", updateNavigationType, { passive: true });
 updateNavigationType();
 
 const chips = document.querySelectorAll("[data-filter]");
-const projects = document.querySelectorAll(".project-card");
+const projects = Array.from(document.querySelectorAll(".project-card"));
+const loadMoreButton = document.querySelector("[data-load-more]");
+const loadMoreWrap = document.querySelector("[data-load-more-wrap]");
+const projectsPerPage = 4;
+let activeProjectFilter = "all";
+let visibleProjectLimit = projectsPerPage;
+
+function renderProjects() {
+  const matchingProjects = projects.filter((project) => {
+    return activeProjectFilter === "all" || project.dataset.category === activeProjectFilter;
+  });
+
+  projects.forEach((project) => {
+    const matchesFilter = matchingProjects.includes(project);
+    const isWithinLimit = matchingProjects.indexOf(project) < visibleProjectLimit;
+    const visible = matchesFilter && isWithinLimit;
+    project.hidden = !visible;
+
+    if (!prefersReducedMotion && visible) {
+      animate(project, { opacity: [0, 1], y: [14, 0] }, { duration: 0.32, easing: "ease-out" });
+    }
+  });
+
+  const hasMoreProjects = matchingProjects.length > visibleProjectLimit;
+  if (loadMoreWrap) loadMoreWrap.hidden = !hasMoreProjects;
+  loadMoreButton?.setAttribute("aria-expanded", String(visibleProjectLimit > projectsPerPage));
+}
 
 chips.forEach((chip) => {
   chip.addEventListener("click", () => {
-    const filter = chip.dataset.filter;
+    activeProjectFilter = chip.dataset.filter;
+    visibleProjectLimit = projectsPerPage;
     chips.forEach((item) => {
       const isActive = item === chip;
       item.classList.toggle("is-active", isActive);
       item.setAttribute("aria-pressed", String(isActive));
     });
-    projects.forEach((project) => {
-      const visible = filter === "all" || project.dataset.category === filter;
-      project.hidden = !visible;
-      if (!prefersReducedMotion && visible) {
-        animate(project, { opacity: [0, 1], y: [14, 0] }, { duration: 0.32, easing: "ease-out" });
-      }
-    });
+    renderProjects();
   });
 });
+
+loadMoreButton?.addEventListener("click", () => {
+  visibleProjectLimit += projectsPerPage;
+  renderProjects();
+});
+
+renderProjects();
 
 const viewport = document.querySelector(".testimonial-viewport");
 const track = document.querySelector(".testimonial-track");
 const dots = document.querySelectorAll(".carousel-dots span");
+const carouselPrevButton = document.querySelector("[data-carousel='prev']");
+const carouselNextButton = document.querySelector("[data-carousel='next']");
 let carouselIndex = 0;
 
 function updateCarousel(direction = 1) {
@@ -75,11 +105,14 @@ function updateCarousel(direction = 1) {
   track.style.transform = `translateX(${carouselIndex * -cardWidth}px)`;
   const activeDot = carouselIndex > 0 ? 1 : 0;
   dots.forEach((dot, index) => dot.classList.toggle("is-active", index === activeDot));
+  if (carouselPrevButton) carouselPrevButton.disabled = carouselIndex === 0;
+  if (carouselNextButton) carouselNextButton.disabled = carouselIndex === maxIndex;
 }
 
-document.querySelector("[data-carousel='prev']")?.addEventListener("click", () => updateCarousel(-1));
-document.querySelector("[data-carousel='next']")?.addEventListener("click", () => updateCarousel(1));
+carouselPrevButton?.addEventListener("click", () => updateCarousel(-1));
+carouselNextButton?.addEventListener("click", () => updateCarousel(1));
 window.addEventListener("resize", () => updateCarousel(0));
+updateCarousel(0);
 
 if (!prefersReducedMotion) {
   inView("[data-motion]", (element) => {
