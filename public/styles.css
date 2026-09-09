@@ -495,13 +495,13 @@ h1 span {
 
 .button-outline {
   color: var(--black);
-  border-color: var(--black-3);
-  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--border-light-2);
+  background: var(--white);
   box-shadow: inset 0 0 4px rgba(84, 84, 84, 0.7);
 }
 
 .button-outline:hover {
-  background: rgba(222, 222, 222, 0.1);
+  background: var(--white-2);
 }
 
 .hero-meta {
@@ -737,13 +737,13 @@ h1 span {
   height: 36px;
   min-height: 36px;
   padding: 0 16px;
-  border-color: var(--black-3);
-  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--border-light-2);
+  background: var(--white);
   box-shadow: inset 0 0 4px rgba(84, 84, 84, 0.7);
 }
 
 .small-button:hover {
-  background: rgba(222, 222, 222, 0.1);
+  background: var(--white-2);
 }
 
 .chip.is-active {
