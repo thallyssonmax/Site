@@ -102,6 +102,36 @@ button:focus-visible {
   cursor: pointer;
 }
 
+.brand *,
+.brand::before,
+.brand::after,
+.nav-links a *,
+.nav-links a::before,
+.nav-links a::after,
+.nav-contact *,
+.nav-contact::before,
+.nav-contact::after,
+.button *,
+.button::before,
+.button::after,
+.small-button *,
+.small-button::before,
+.small-button::after,
+.chip *,
+.chip::before,
+.chip::after,
+.project-preview *,
+.project-preview::before,
+.project-preview::after,
+.carousel-controls button *,
+.carousel-controls button::before,
+.carousel-controls button::after,
+.nav-toggle *,
+.nav-toggle::before,
+.nav-toggle::after {
+  cursor: pointer;
+}
+
 img,
 video {
   display: block;
