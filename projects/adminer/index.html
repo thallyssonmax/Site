@@ -15,7 +15,7 @@
     <meta property="og:title" content="Criando a feature mais usada do produto | Adminer" />
     <meta property="og:description" content="O processo e os resultados por trás de Produtos Quentes, a feature mais usada da Adminer." />
     <meta property="og:url" content="https://thallyssonmax.com/projects/adminer/" />
-    <meta property="og:image" content="https://thallyssonmax.com/assets/projects/Produtos%20quentes/Adminer%20-%20cover%20%5Bpt%5D.png" />
+    <meta property="og:image" content="https://thallyssonmax.com/assets/projects/Produtos%20quentes/adminer-detail.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="preload" href="/assets/fonts/sf-pro-display-regular.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="/styles.css" />
@@ -35,7 +35,7 @@
           <h1 id="case-title">Criando a feature mais usada do produto</h1>
         </div>
         <figure class="case-container case-cover" data-motion>
-          <img src="/assets/projects/Produtos quentes/Adminer - cover [pt].png" alt="Interface do Produtos Quentes na plataforma Adminer" width="3200" height="2400" fetchpriority="high" />
+          <img src="/assets/projects/Produtos quentes/adminer-detail.jpg" alt="Interfaces de Produtos Quentes e detalhes do produto na Adminer" width="1800" height="1200" fetchpriority="high" />
         </figure>
       </section>
 
@@ -102,16 +102,42 @@
 
       <section class="case-section" aria-labelledby="result-title">
         <div class="case-container">
-          <div class="case-heading" data-motion>
-            <p class="case-eyebrow">O Produto Finalizado</p>
-            <h2 id="result-title">O Resultado de Design</h2>
-          </div>
-          <figure class="case-result" data-motion>
-            <div class="case-result-media">
-              <img src="/assets/projects/Produtos quentes/Adminer - body [pt].png" alt="Tela principal de Produtos Quentes com filtros e cards de produtos" width="3200" height="3836" loading="lazy" />
+          <div class="case-result-header" data-motion>
+            <div class="case-heading">
+              <p class="case-eyebrow">O Produto Finalizado</p>
+              <h2 id="result-title">O Resultado de Design</h2>
             </div>
-            <figcaption>A tela principal que permite uma visão geral dos produtos com maior potencial de venda.</figcaption>
-          </figure>
+            <div class="carousel-controls case-gallery-controls">
+              <button type="button" data-gallery-prev aria-label="Imagem anterior" aria-controls="case-gallery-viewport" disabled><span aria-hidden="true">←</span></button>
+              <button type="button" data-gallery-next aria-label="Próxima imagem" aria-controls="case-gallery-viewport"><span aria-hidden="true">→</span></button>
+            </div>
+          </div>
+          <div class="case-gallery" data-case-gallery data-motion>
+            <div class="case-gallery-shell">
+              <div class="case-gallery-viewport" id="case-gallery-viewport" role="region" aria-roledescription="carrossel" aria-label="Resultados de design da Adminer" tabindex="0">
+                <div class="case-gallery-track">
+                  <figure class="case-gallery-item" role="group" aria-roledescription="slide" aria-label="1 de 3">
+                    <div class="case-gallery-image"><img src="/assets/projects/Produtos quentes/gallery-image-1.jpg" alt="Tela principal de Produtos Quentes com filtros e produtos em destaque" width="1095" height="1469" loading="lazy" decoding="async" /></div>
+                    <figcaption>A tela principal que permite uma visão geral dos produtos com maior potencial de venda.</figcaption>
+                  </figure>
+                  <figure class="case-gallery-item" role="group" aria-roledescription="slide" aria-label="2 de 3">
+                    <div class="case-gallery-image"><img src="/assets/projects/Produtos quentes/gallery-image-2.jpg" alt="Detalhes de um produto e gráfico de desempenho na Adminer" width="1095" height="1469" loading="lazy" decoding="async" /></div>
+                    <figcaption>A tela de detalhes permite analisar informações detalhadas sobre o produto com potencial de venda.</figcaption>
+                  </figure>
+                  <figure class="case-gallery-item" role="group" aria-roledescription="slide" aria-label="3 de 3">
+                    <div class="case-gallery-image"><img src="/assets/projects/Produtos quentes/gallery-image-3.jpg" alt="Gráfico de desempenho e fornecedores relacionados ao produto" width="1095" height="1469" loading="lazy" decoding="async" /></div>
+                    <figcaption>Continuação da tela de detalhes do produto com potencial de venda.</figcaption>
+                  </figure>
+                </div>
+              </div>
+              <div class="case-gallery-fade" aria-hidden="true"></div>
+            </div>
+            <div class="case-gallery-dots" aria-label="Selecionar imagem">
+              <button type="button" class="is-active" data-gallery-dot="0" aria-label="Imagem 1 de 3" aria-current="true" aria-controls="case-gallery-viewport"></button>
+              <button type="button" data-gallery-dot="1" aria-label="Imagem 2 de 3" aria-controls="case-gallery-viewport"></button>
+              <button type="button" data-gallery-dot="2" aria-label="Imagem 3 de 3" aria-controls="case-gallery-viewport"></button>
+            </div>
+          </div>
         </div>
       </section>
 
