@@ -237,7 +237,7 @@ main {
 .brand img {
   width: 127px;
   height: 36px;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .nav-links {
