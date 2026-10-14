@@ -58,7 +58,7 @@
         </div>
       </section>
 
-      <section class="case-section case-section-tinted" aria-labelledby="impact-title">
+      <section class="case-section case-section-tinted case-impact" aria-labelledby="impact-title">
         <div class="case-container">
           <div class="case-heading" data-motion>
             <p class="case-eyebrow">Métricas & Resultados</p>
@@ -100,7 +100,7 @@
         </div>
       </section>
 
-      <section class="case-section" aria-labelledby="result-title">
+      <section class="case-section case-result" aria-labelledby="result-title">
         <div class="case-container">
           <div class="case-result-header" data-motion>
             <div class="case-heading">
@@ -117,31 +117,35 @@
               <div class="case-gallery-viewport" id="case-gallery-viewport" role="region" aria-roledescription="carrossel" aria-label="Resultados de design da Adminer" tabindex="0">
                 <div class="case-gallery-track">
                   <figure class="case-gallery-item" role="group" aria-roledescription="slide" aria-label="1 de 3">
-                    <div class="case-gallery-image"><img src="/assets/projects/Produtos quentes/gallery-image-1.jpg" alt="Tela principal de Produtos Quentes com filtros e produtos em destaque" width="1095" height="1469" loading="lazy" decoding="async" /></div>
+                    <button class="case-gallery-image" type="button" data-gallery-zoom aria-label="Ampliar primeira imagem da galeria" aria-haspopup="dialog"><img src="/assets/projects/Produtos quentes/gallery-image-1.jpg" alt="Tela principal de Produtos Quentes com filtros e produtos em destaque" width="1095" height="1469" loading="lazy" decoding="async" /></button>
                     <figcaption>A tela principal que permite uma visão geral dos produtos com maior potencial de venda.</figcaption>
                   </figure>
                   <figure class="case-gallery-item" role="group" aria-roledescription="slide" aria-label="2 de 3">
-                    <div class="case-gallery-image"><img src="/assets/projects/Produtos quentes/gallery-image-2.jpg" alt="Detalhes de um produto e gráfico de desempenho na Adminer" width="1095" height="1469" loading="lazy" decoding="async" /></div>
+                    <button class="case-gallery-image" type="button" data-gallery-zoom aria-label="Ampliar segunda imagem da galeria" aria-haspopup="dialog"><img src="/assets/projects/Produtos quentes/gallery-image-2.jpg" alt="Detalhes de um produto e gráfico de desempenho na Adminer" width="1095" height="1469" loading="lazy" decoding="async" /></button>
                     <figcaption>A tela de detalhes permite analisar informações detalhadas sobre o produto com potencial de venda.</figcaption>
                   </figure>
                   <figure class="case-gallery-item" role="group" aria-roledescription="slide" aria-label="3 de 3">
-                    <div class="case-gallery-image"><img src="/assets/projects/Produtos quentes/gallery-image-3.jpg" alt="Gráfico de desempenho e fornecedores relacionados ao produto" width="1095" height="1469" loading="lazy" decoding="async" /></div>
+                    <button class="case-gallery-image" type="button" data-gallery-zoom aria-label="Ampliar terceira imagem da galeria" aria-haspopup="dialog"><img src="/assets/projects/Produtos quentes/gallery-image-3.jpg" alt="Gráfico de desempenho e fornecedores relacionados ao produto" width="1095" height="1469" loading="lazy" decoding="async" /></button>
                     <figcaption>Continuação da tela de detalhes do produto com potencial de venda.</figcaption>
                   </figure>
                 </div>
               </div>
-              <div class="case-gallery-fade" aria-hidden="true"></div>
             </div>
-            <div class="case-gallery-dots" aria-label="Selecionar imagem">
-              <button type="button" class="is-active" data-gallery-dot="0" aria-label="Imagem 1 de 3" aria-current="true" aria-controls="case-gallery-viewport"></button>
-              <button type="button" data-gallery-dot="1" aria-label="Imagem 2 de 3" aria-controls="case-gallery-viewport"></button>
-              <button type="button" data-gallery-dot="2" aria-label="Imagem 3 de 3" aria-controls="case-gallery-viewport"></button>
-            </div>
+            <div class="case-gallery-dots" aria-label="Selecionar imagem"></div>
           </div>
         </div>
       </section>
 
-      <section class="case-section case-section-tinted" aria-labelledby="lessons-title">
+      <dialog class="case-gallery-dialog" aria-label="Imagem ampliada do resultado de design">
+        <button class="case-gallery-dialog-close" type="button" aria-label="Fechar imagem ampliada" title="Fechar">&times;</button>
+        <div class="case-gallery-dialog-view">
+          <button class="case-gallery-dialog-image" type="button" aria-label="Aproximar imagem" aria-pressed="false" title="Aproximar imagem">
+            <img alt="" draggable="false" />
+          </button>
+        </div>
+      </dialog>
+
+      <section class="case-section case-section-tinted case-lessons" aria-labelledby="lessons-title">
         <div class="case-container">
           <div class="case-heading" data-motion>
             <p class="case-eyebrow">Reflexões finais</p>
@@ -168,7 +172,7 @@
           </div>
         </div>
       </div>
-      <div class="site-footer"><p>© 2026 Thallysson Makcyel · CNPJ: 42.321.980/0001-74</p><p>Product Design · UX/UI · AI Design Engineer · Behavior Design</p></div>
+      <div class="site-footer"><p>© 2026 Thallysson Makcyel · CNPJ: 42.321.980/0001-74</p><p>Product Design AI · UX Design · UI Design · Web Design · Figma</p></div>
     </footer>
     <script type="module" src="/src/project-detail.js"></script>
   </body>

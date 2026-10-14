@@ -93,6 +93,7 @@ renderProjects();
 
 const viewport = document.querySelector(".testimonial-viewport");
 const track = document.querySelector(".testimonial-track");
+const carouselShell = document.querySelector(".testimonial-shell");
 const dotsWrap = document.querySelector(".carousel-dots");
 const carouselPrevButton = document.querySelector("[data-carousel='prev']");
 const carouselNextButton = document.querySelector("[data-carousel='next']");
@@ -120,6 +121,7 @@ function setActiveCarouselDot(index) {
 
 function updateMobileCarouselDots() {
   if (!track || !viewport || !mobileCarouselQuery.matches) return;
+  carouselShell?.classList.toggle("has-next", viewport.scrollLeft + viewport.clientWidth < viewport.scrollWidth - 2);
   const cards = Array.from(track.children);
   const currentCard = cards.reduce((closest, card, index) => {
     const distance = Math.abs(card.getBoundingClientRect().left - viewport.getBoundingClientRect().left);
@@ -148,6 +150,7 @@ function updateCarousel(direction = 1) {
   track.style.transform = `translateX(${carouselIndex * -cardWidth}px)`;
   renderCarouselDots(maxIndex + 1);
   setActiveCarouselDot(carouselIndex);
+  carouselShell?.classList.toggle("has-next", carouselIndex < maxIndex);
   if (carouselPrevButton) carouselPrevButton.disabled = carouselIndex === 0;
   if (carouselNextButton) carouselNextButton.disabled = carouselIndex === maxIndex;
 }

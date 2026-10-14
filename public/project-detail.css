@@ -19,14 +19,9 @@
 .case-nav-inner {
   display: flex;
   align-items: center;
-  width: min(1740px, calc(100% - 48px));
+  width: 100%;
   height: 56px;
-  margin-inline: auto;
-  padding: 5px;
-  border-radius: 28px;
-  background: rgba(255, 255, 255, 0.28);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+  padding: 5px 32px;
 }
 
 .case-back {
@@ -102,6 +97,18 @@
 .case-section-tinted {
   border-top: 1px solid var(--border-light);
   background: var(--warm-bg);
+}
+
+.case-impact {
+  border-top: 0;
+}
+
+.case-lessons {
+  border-top: 0;
+}
+
+.case-result {
+  border-top: 1px solid var(--border-light);
 }
 
 .case-split {
@@ -265,12 +272,18 @@
 }
 
 .case-gallery {
-  --case-gallery-slide-width: min(730px, calc(100vw - 80px));
+  --case-gallery-slide-width: min(552px, calc(100vw - 48px));
   margin-top: 48px;
 }
 
 .case-gallery-shell {
   position: relative;
+}
+
+.case-gallery-shell.has-next {
+  --edge-fade: clamp(32px, 7vw, 80px);
+  -webkit-mask-image: linear-gradient(to right, #000 0, #000 calc(100% - var(--edge-fade)), transparent 100%);
+  mask-image: linear-gradient(to right, #000 0, #000 calc(100% - var(--edge-fade)), transparent 100%);
 }
 
 .case-gallery-viewport {
@@ -306,17 +319,27 @@
 }
 
 .case-gallery-image {
+  display: block;
+  width: 100%;
+  padding: 0;
   overflow: hidden;
-  aspect-ratio: 1095 / 1469;
-  border: 1px solid var(--border-light);
-  border-radius: 9px;
+  aspect-ratio: 552 / 740;
+  border: 0;
+  border-radius: 12px;
   background: #f7f7f7;
+  cursor: zoom-in;
 }
 
 .case-gallery-image img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.case-gallery-image:focus-visible {
+  outline: 2px solid var(--black-2);
+  outline-offset: 4px;
 }
 
 .case-gallery-item figcaption {
@@ -327,27 +350,10 @@
   text-align: center;
 }
 
-.case-gallery-fade {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 26px;
-  width: min(219px, 20%);
-  background: rgba(255, 255, 255, 0.01);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  pointer-events: none;
-  transition: opacity 180ms ease;
-}
-
-.case-gallery.is-at-end .case-gallery-fade {
-  opacity: 0;
-}
-
 .case-gallery-dots {
   display: flex;
   justify-content: center;
-  padding-top: 24px;
+  padding-top: 32px;
 }
 
 .case-gallery-dots button {
@@ -375,6 +381,83 @@
 .case-gallery-dots button:focus-visible {
   outline: 2px solid var(--black-2);
   outline-offset: 2px;
+}
+
+html.is-gallery-zoomed {
+  overflow: hidden;
+}
+
+.case-gallery-dialog {
+  width: min(94vw, 1095px);
+  max-width: none;
+  max-height: 90dvh;
+  padding: 0;
+  overflow: visible;
+  border: 0;
+  background: transparent;
+}
+
+.case-gallery-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.case-gallery-dialog-view {
+  max-height: 90dvh;
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+}
+
+.case-gallery-dialog-image {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+}
+
+.case-gallery-dialog-image img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  max-height: 90dvh;
+  height: auto;
+  margin-inline: auto;
+  border-radius: 12px;
+}
+
+.case-gallery-dialog.is-zoomed .case-gallery-dialog-image {
+  width: min(200%, 1095px);
+  cursor: zoom-out;
+}
+
+.case-gallery-dialog.is-zoomed .case-gallery-dialog-image img {
+  width: 100%;
+  max-width: none;
+  max-height: none;
+}
+
+.case-gallery-dialog-close {
+  position: fixed;
+  z-index: 1;
+  top: max(16px, env(safe-area-inset-top));
+  right: max(16px, env(safe-area-inset-right));
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--black-3);
+  border-radius: 50%;
+  background: rgba(16, 16, 16, 0.9);
+  color: var(--white);
+  font-size: 28px;
+  line-height: 1;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .case-next {
@@ -498,15 +581,12 @@
   }
 
   .case-gallery {
+    --case-gallery-slide-width: min(552px, calc(100vw - 72px));
     margin-top: 32px;
   }
 
   .case-gallery-track {
     gap: 16px;
-  }
-
-  .case-gallery-fade {
-    display: none;
   }
 
   .case-next {

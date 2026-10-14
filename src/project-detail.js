@@ -5,14 +5,33 @@ document.querySelector(".case-next video")?.play().catch(() => {});
 const gallery = document.querySelector("[data-case-gallery]");
 if (gallery) {
   const viewport = gallery.querySelector(".case-gallery-viewport");
+  const shell = gallery.querySelector(".case-gallery-shell");
   const track = gallery.querySelector(".case-gallery-track");
   const slides = Array.from(gallery.querySelectorAll(".case-gallery-item"));
-  const dots = Array.from(gallery.querySelectorAll("[data-gallery-dot]"));
+  const dotsContainer = gallery.querySelector(".case-gallery-dots");
+  const dots = slides.map((slide, index) => {
+    slide.id = `${viewport.id}-image-${index + 1}`;
+    slide.setAttribute("aria-label", `${index + 1} de ${slides.length}`);
+    slide.querySelector("[data-gallery-zoom]")?.setAttribute("aria-label", `Ampliar imagem ${index + 1} de ${slides.length}`);
+
+    const dot = document.createElement("button");
+    dot.type = "button";
+    dot.dataset.galleryDot = String(index);
+    dot.setAttribute("aria-label", `Imagem ${index + 1} de ${slides.length}`);
+    dot.setAttribute("aria-controls", slide.id);
+    dotsContainer.append(dot);
+    return dot;
+  });
   const previous = document.querySelector("[data-gallery-prev]");
   const next = document.querySelector("[data-gallery-next]");
+  const zoomDialog = document.querySelector(".case-gallery-dialog");
+  const zoomView = zoomDialog.querySelector(".case-gallery-dialog-view");
+  const zoomButton = zoomDialog.querySelector(".case-gallery-dialog-image");
+  const zoomImage = zoomButton.querySelector("img");
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   let activeIndex = 0;
   let scrollFrame = 0;
+  let zoomTrigger = null;
 
   const slideOffset = (index) => slides[index].offsetLeft - slides[0].offsetLeft;
 
@@ -20,7 +39,6 @@ if (gallery) {
     activeIndex = index;
     previous.disabled = index === 0;
     next.disabled = index === slides.length - 1;
-    gallery.classList.toggle("is-at-end", next.disabled);
     dots.forEach((dot, dotIndex) => {
       dot.classList.toggle("is-active", dotIndex === index);
       if (dotIndex === index) dot.setAttribute("aria-current", "true");
@@ -38,6 +56,7 @@ if (gallery) {
   }
 
   function syncActiveSlide() {
+    shell.classList.toggle("has-next", viewport.scrollLeft + viewport.clientWidth < viewport.scrollWidth - 2);
     const closestIndex = slides.reduce((closest, slide, index) => (
       Math.abs(slideOffset(index) - viewport.scrollLeft) < Math.abs(slideOffset(closest) - viewport.scrollLeft)
         ? index
@@ -66,6 +85,39 @@ if (gallery) {
   });
   window.addEventListener("resize", measureGallery);
   measureGallery();
+
+  gallery.querySelectorAll("[data-gallery-zoom]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const image = button.querySelector("img");
+      zoomTrigger = button;
+      zoomImage.src = image.currentSrc || image.src;
+      zoomImage.alt = image.alt;
+      zoomDialog.classList.remove("is-zoomed");
+      zoomButton.setAttribute("aria-pressed", "false");
+      zoomView.scrollTo(0, 0);
+      document.documentElement.classList.add("is-gallery-zoomed");
+      zoomDialog.showModal();
+    });
+  });
+
+  zoomButton.addEventListener("click", () => {
+    const isZoomed = zoomDialog.classList.toggle("is-zoomed");
+    zoomButton.setAttribute("aria-pressed", String(isZoomed));
+    zoomButton.setAttribute("aria-label", isZoomed ? "Afastar imagem" : "Aproximar imagem");
+    zoomButton.title = isZoomed ? "Afastar imagem" : "Aproximar imagem";
+    zoomView.scrollTo(isZoomed ? (zoomView.scrollWidth - zoomView.clientWidth) / 2 : 0, 0);
+  });
+
+  zoomDialog.querySelector(".case-gallery-dialog-close").addEventListener("click", () => zoomDialog.close());
+  zoomDialog.addEventListener("click", (event) => {
+    if (event.target === zoomDialog) zoomDialog.close();
+  });
+  zoomDialog.addEventListener("close", () => {
+    document.documentElement.classList.remove("is-gallery-zoomed");
+    zoomImage.removeAttribute("src");
+    zoomImage.alt = "";
+    zoomTrigger?.focus();
+  });
 }
 
 initScrollMotion();
