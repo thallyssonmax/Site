@@ -1,4 +1,5 @@
-import { animate, inView, stagger } from "motion";
+import { animate } from "motion";
+import { initScrollMotion } from "./scroll-motion.js";
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -43,6 +44,7 @@ const chips = document.querySelectorAll("[data-filter]");
 const projects = Array.from(document.querySelectorAll(".project-card"));
 const loadMoreButton = document.querySelector("[data-load-more]");
 const loadMoreWrap = document.querySelector("[data-load-more-wrap]");
+const projectEmpty = document.querySelector("[data-project-empty]");
 const projectsPerPage = 4;
 let activeProjectFilter = "all";
 let visibleProjectLimit = projectsPerPage;
@@ -65,6 +67,7 @@ function renderProjects() {
 
   const hasMoreProjects = matchingProjects.length > visibleProjectLimit;
   if (loadMoreWrap) loadMoreWrap.hidden = !hasMoreProjects;
+  if (projectEmpty) projectEmpty.hidden = matchingProjects.length > 0;
   loadMoreButton?.setAttribute("aria-expanded", String(visibleProjectLimit > projectsPerPage));
 }
 
@@ -156,11 +159,4 @@ window.addEventListener("resize", () => updateCarousel(0));
 mobileCarouselQuery.addEventListener("change", () => updateCarousel(0));
 updateCarousel(0);
 
-if (!prefersReducedMotion) {
-  inView("[data-motion]", (element) => {
-    const children = element.matches(".project-grid, .steps-list, .service-list")
-      ? element.children
-      : [element];
-    animate(children, { opacity: [0, 1], y: [18, 0] }, { duration: 0.55, delay: stagger(0.06), easing: "ease-out" });
-  }, { amount: 0.18, margin: "0px 0px -80px 0px" });
-}
+initScrollMotion();

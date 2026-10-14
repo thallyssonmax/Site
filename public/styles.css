@@ -96,7 +96,7 @@ button:focus-visible {
 .button,
 .small-button,
 .chip,
-.project-preview,
+.project-link,
 .carousel-controls button,
 .nav-toggle {
   cursor: pointer;
@@ -120,9 +120,9 @@ button:focus-visible {
 .chip *,
 .chip::before,
 .chip::after,
-.project-preview *,
-.project-preview::before,
-.project-preview::after,
+.project-link *,
+.project-link::before,
+.project-link::after,
 .carousel-controls button *,
 .carousel-controls button::before,
 .carousel-controls button::after,
@@ -863,49 +863,84 @@ h1 span {
   min-width: 0;
 }
 
+.project-link {
+  display: block;
+}
+
 .project-preview {
   position: relative;
-  min-height: 504px;
-  display: grid;
-  place-items: center;
+  aspect-ratio: 572 / 504;
+  width: 100%;
   overflow: hidden;
   border: 1px solid var(--border-light);
   border-radius: var(--radius-card);
-  background:
-    linear-gradient(135deg, rgba(16, 16, 16, 0.03), rgba(255, 156, 75, 0.08)),
-    var(--white-2);
+  background: var(--white-2);
 }
 
 .project-preview::before {
   content: "";
   position: absolute;
-  inset: 40px;
-  border: 1px solid rgba(16, 16, 16, 0.04);
-  border-radius: 8px;
-  background:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0)),
-    repeating-linear-gradient(0deg, rgba(16, 16, 16, 0.035) 0 1px, transparent 1px 42px);
-}
-
-.project-preview img,
-.project-preview span {
-  position: relative;
+  inset: 0;
   z-index: 1;
+  background: rgba(16, 16, 16, 0.26);
+  box-shadow: inset 0 0 56px rgba(255, 255, 255, 0.38);
+  opacity: 0;
+  transition: opacity 220ms ease;
+  pointer-events: none;
 }
 
 .project-preview img {
-  width: 72px;
-  height: 72px;
-  object-fit: contain;
-  border-radius: 18px;
-  background: var(--white);
-  box-shadow: 0 18px 44px rgba(16, 16, 16, 0.08);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.project-preview span {
-  color: var(--gray-3);
-  font-weight: 700;
-  font-size: 18px;
+.project-preview .project-badge {
+  position: absolute;
+  z-index: 2;
+  top: 32px;
+  right: 32px;
+  display: grid;
+  place-items: center;
+  min-height: 32px;
+  padding: 0 16px;
+  border-radius: var(--radius-pill);
+  background: var(--white);
+  color: var(--black-2);
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.project-hover-icon {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--black-2);
+  font-size: 30px;
+  line-height: 1;
+  transform: translate(-50%, -45%) scale(0.9);
+  opacity: 0;
+  transition: transform 220ms ease, opacity 220ms ease;
+  pointer-events: none;
+}
+
+.project-link:hover .project-preview::before,
+.project-link:focus-visible .project-preview::before,
+.project-link:hover .project-hover-icon,
+.project-link:focus-visible .project-hover-icon {
+  opacity: 1;
+}
+
+.project-link:hover .project-hover-icon,
+.project-link:focus-visible .project-hover-icon {
+  transform: translate(-50%, -50%) scale(1);
 }
 
 .project-info {
@@ -914,7 +949,7 @@ h1 span {
   justify-content: space-between;
   align-items: flex-start;
   gap: 18px;
-  padding-top: 14px;
+  padding-top: 16px;
 }
 
 .project-info h3 {
@@ -933,16 +968,29 @@ h1 span {
   letter-spacing: -0.4px;
 }
 
-.project-info span {
+.project-info .project-corner-icon {
   display: flex;
   align-items: center;
-  align-self: stretch;
-  padding: 0 12px;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  margin-top: 2px;
   color: #b8b8b8;
   font-size: 16px;
   line-height: 1;
   font-weight: 400;
-  letter-spacing: -0.3125px;
+  transition: opacity 220ms ease;
+}
+
+.project-link:hover .project-corner-icon,
+.project-link:focus-visible .project-corner-icon {
+  opacity: 0;
+}
+
+.project-empty {
+  padding: 48px 0;
+  color: var(--gray-2);
+  text-align: center;
 }
 
 .center-action {
@@ -1480,7 +1528,7 @@ h1 span {
   }
 
   .project-preview {
-    min-height: 360px;
+    aspect-ratio: 572 / 504;
   }
 
   .sticky-copy {
@@ -1679,7 +1727,13 @@ h1 span {
   }
 
   .project-preview {
+    aspect-ratio: 1 / 1;
     min-height: 340px;
+  }
+
+  .project-preview .project-badge {
+    top: 20px;
+    right: 20px;
   }
 
   .project-info {

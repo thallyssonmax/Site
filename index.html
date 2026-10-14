@@ -179,34 +179,47 @@
               <button class="chip is-active" type="button" data-filter="all" aria-pressed="true">Todos</button>
               <button class="chip" type="button" data-filter="product" aria-pressed="false">Product Design</button>
               <button class="chip" type="button" data-filter="web" aria-pressed="false">Web Design</button>
+              <button class="chip" type="button" data-filter="experiment" aria-pressed="false">Experimentos</button>
             </div>
           </div>
           <div class="project-grid" id="project-grid" data-motion>
-            <article class="project-card" data-category="product">
-              <a class="project-preview" href="#" aria-label="Ver projeto Expandindo o produto">
-                <img src="/assets/logos/frenet.jfif" alt="" width="72" height="72" loading="lazy" />
-              </a>
-              <div class="project-info"><div><h3>Expandindo o produto</h3><p>Frenet · SaaS & Intermediação · Logística</p></div><span aria-hidden="true">↗</span></div>
+            <!-- Destinations: coming-soon has no link; detail opens locally; external opens in a new tab. -->
+            <article class="project-card project-card-soon" data-category="product" data-destination="coming-soon">
+              <div class="project-preview">
+                <img src="/assets/projects/Frenet/Frenet - cover [pt].png" alt="Identidade visual da Frenet sobre fundo violeta" width="2880" height="1620" loading="lazy" />
+                <span class="project-badge">Em breve</span>
+              </div>
+              <div class="project-info"><div><h3>Expandindo o produto</h3><p>Frenet · Logística</p></div></div>
             </article>
-            <article class="project-card" data-category="product">
-              <a class="project-preview" href="#" aria-label="Ver projeto Resenhando toda à plataforma">
-                <img src="/assets/logos/adminer.jfif" alt="" width="72" height="72" loading="lazy" />
+            <article class="project-card" data-category="product" data-destination="detail">
+              <a class="project-link" href="/projects/adminer/" aria-label="Ver case: Criando a feature mais usada do produto">
+                <div class="project-preview">
+                  <img src="/assets/projects/Produtos quentes/Adminer - cover [pt].png" alt="Interface da feature Produtos Quentes da Adminer" width="3200" height="2400" loading="lazy" />
+                  <span class="project-hover-icon" aria-hidden="true">↗</span>
+                </div>
+                <div class="project-info"><div><h3>Criando a feature mais usada do produto</h3><p>Adminer · SaaS</p></div><span class="project-corner-icon" aria-hidden="true">↗</span></div>
               </a>
-              <div class="project-info"><div><h3>Resenhando toda à plataforma</h3><p>Adminer · SaaS</p></div><span aria-hidden="true">↗</span></div>
             </article>
-            <article class="project-card" data-category="web">
-              <a class="project-preview" href="#" aria-label="Ver projeto Tornando o site bonito e performático para campanhas">
-                <img src="/assets/logos/adminer.jfif" alt="" width="72" height="72" loading="lazy" />
+            <article class="project-card" data-category="web" data-destination="external">
+              <a class="project-link" href="https://contactflow-case.webflow.io/" target="_blank" rel="noopener noreferrer" aria-label="Ver case ContactFlow em nova aba">
+                <div class="project-preview">
+                  <img src="/assets/projects/Contact Flow/ContactFlow - conver [pt].png" alt="Website ContactFlow apresentado em notebook" width="1536" height="1024" loading="lazy" />
+                  <span class="project-hover-icon" aria-hidden="true">↗</span>
+                </div>
+                <div class="project-info"><div><h3>Marca forte. Site que vende.</h3><p>ContactFlow · Website</p></div><span class="project-corner-icon" aria-hidden="true">↗</span></div>
               </a>
-              <div class="project-info"><div><h3>Tornando o site bonito e performático para campanhas</h3><p>Adminer · SaaS · Marketing</p></div><span aria-hidden="true">↗</span></div>
             </article>
-            <article class="project-card" data-category="web">
-              <a class="project-preview" href="#" aria-label="Ver projeto Do conceito à experiência digital web">
-                <span>Case</span>
+            <article class="project-card" data-category="web" data-destination="external">
+              <a class="project-link" href="https://travel-case.webflow.io/" target="_blank" rel="noopener noreferrer" aria-label="Ver case Travel em nova aba">
+                <div class="project-preview">
+                  <img src="/assets/projects/Travel/Travel - cover [pt].png" alt="Website Travel apresentado em notebook" width="1672" height="941" loading="lazy" />
+                  <span class="project-hover-icon" aria-hidden="true">↗</span>
+                </div>
+                <div class="project-info"><div><h3>Do conceito à experiência digital web</h3><p>Travel · Website</p></div><span class="project-corner-icon" aria-hidden="true">↗</span></div>
               </a>
-              <div class="project-info"><div><h3>Do conceito à experiência digital web</h3><p>Case de estudo · Website</p></div><span aria-hidden="true">↗</span></div>
             </article>
           </div>
+          <p class="project-empty" data-project-empty hidden>Nenhum experimento publicado ainda.</p>
           <div class="center-action" data-load-more-wrap>
             <button class="small-button" type="button" data-load-more aria-controls="project-grid">Ver mais</button>
           </div>
