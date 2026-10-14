@@ -1450,10 +1450,10 @@ h1 span {
   }
 
   .skills-marquee div {
-    width: 100%;
-    min-width: 100%;
-    justify-content: center;
-    animation: none;
+    width: max-content;
+    min-width: max-content;
+    justify-content: flex-start;
+    animation: marquee 24s linear infinite;
   }
 
   .company-strip {
@@ -1501,7 +1501,7 @@ h1 span {
     right: auto;
     width: 100%;
     padding: 20px;
-    background: rgba(16, 16, 16, 0.9);
+    background: rgba(16, 16, 16, 1);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
   }
@@ -1537,7 +1537,7 @@ h1 span {
 
   .hero {
     min-height: 680px;
-    padding-inline: 24px;
+    padding: 80px 24px 64px;
   }
 
   .availability {
@@ -1562,7 +1562,7 @@ h1 span {
     width: 100%;
     max-width: 100%;
     margin-top: 28px;
-    font-size: clamp(44px, 11vw, 52px);
+    font-size: 48px;
     line-height: 0.95;
     letter-spacing: -0.6px;
     text-wrap: balance;

@@ -90,17 +90,48 @@ renderProjects();
 
 const viewport = document.querySelector(".testimonial-viewport");
 const track = document.querySelector(".testimonial-track");
-const dots = document.querySelectorAll(".carousel-dots span");
+const dotsWrap = document.querySelector(".carousel-dots");
 const carouselPrevButton = document.querySelector("[data-carousel='prev']");
 const carouselNextButton = document.querySelector("[data-carousel='next']");
 const mobileCarouselQuery = window.matchMedia("(max-width: 640px)");
 let carouselIndex = 0;
+let dotCount = 0;
+
+function renderCarouselDots(count) {
+  if (!dotsWrap || count === dotCount) return;
+  dotCount = count;
+  dotsWrap.replaceChildren(
+    ...Array.from({ length: count }, () => {
+      const dot = document.createElement("span");
+      return dot;
+    })
+  );
+}
+
+function setActiveCarouselDot(index) {
+  if (!dotsWrap) return;
+  dotsWrap.querySelectorAll("span").forEach((dot, dotIndex) => {
+    dot.classList.toggle("is-active", dotIndex === index);
+  });
+}
+
+function updateMobileCarouselDots() {
+  if (!track || !viewport || !mobileCarouselQuery.matches) return;
+  const cards = Array.from(track.children);
+  const currentCard = cards.reduce((closest, card, index) => {
+    const distance = Math.abs(card.getBoundingClientRect().left - viewport.getBoundingClientRect().left);
+    return distance < closest.distance ? { index, distance } : closest;
+  }, { index: 0, distance: Number.POSITIVE_INFINITY });
+  setActiveCarouselDot(currentCard.index);
+}
 
 function updateCarousel(direction = 1) {
   if (!track || !viewport) return;
 
   if (mobileCarouselQuery.matches) {
     track.style.transform = "";
+    renderCarouselDots(track.children.length);
+    updateMobileCarouselDots();
     if (carouselPrevButton) carouselPrevButton.disabled = false;
     if (carouselNextButton) carouselNextButton.disabled = false;
     return;
@@ -112,14 +143,15 @@ function updateCarousel(direction = 1) {
   const maxIndex = Math.max(0, track.children.length - visibleCards);
   carouselIndex = Math.min(Math.max(carouselIndex + direction, 0), maxIndex);
   track.style.transform = `translateX(${carouselIndex * -cardWidth}px)`;
-  const activeDot = carouselIndex > 0 ? 1 : 0;
-  dots.forEach((dot, index) => dot.classList.toggle("is-active", index === activeDot));
+  renderCarouselDots(maxIndex + 1);
+  setActiveCarouselDot(carouselIndex);
   if (carouselPrevButton) carouselPrevButton.disabled = carouselIndex === 0;
   if (carouselNextButton) carouselNextButton.disabled = carouselIndex === maxIndex;
 }
 
 carouselPrevButton?.addEventListener("click", () => updateCarousel(-1));
 carouselNextButton?.addEventListener("click", () => updateCarousel(1));
+viewport?.addEventListener("scroll", updateMobileCarouselDots, { passive: true });
 window.addEventListener("resize", () => updateCarousel(0));
 mobileCarouselQuery.addEventListener("change", () => updateCarousel(0));
 updateCarousel(0);
