@@ -1,4 +1,6 @@
 node_modules/
+.env*
+!.env.example
 dist/
 .vercel/
 .DS_Store
@@ -7,3 +9,5 @@ dist/
 /Personal assets/
 /Reference images/
 /audit-screenshots/
+Dados Analytics Google.txt
+

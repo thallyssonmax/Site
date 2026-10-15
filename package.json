@@ -3,14 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "engines": { "node": ">=22" },
   "scripts": {
     "dev": "vite --host 127.0.0.1 --port 4173 --strictPort",
     "build": "vite build",
-    "preview": "vite preview --host 127.0.0.1 --port 5173 --strictPort"
+    "preview": "vite preview --host 127.0.0.1 --port 5173 --strictPort",
+    "test": "node --test tests/*.test.js",
+    "analytics:setup": "node --env-file=.env.local scripts/setup-analytics.js"
   },
   "dependencies": {
+    "@neondatabase/serverless": "^1.2.0",
+    "google-auth-library": "^11.3.0",
     "motion": "^12.23.24",
     "vite": "^5.4.19"
-  },
-  "devDependencies": {}
+  }
 }

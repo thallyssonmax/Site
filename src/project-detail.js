@@ -1,4 +1,5 @@
 import { initI18n, t } from "./i18n.js";
+import "./analytics-tracker.js";
 import { initScrollMotion } from "./scroll-motion.js";
 
 initI18n();

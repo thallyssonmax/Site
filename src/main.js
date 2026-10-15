@@ -1,4 +1,5 @@
 import { animate } from "motion";
+import "./analytics-tracker.js";
 import { initI18n, t } from "./i18n.js";
 import { initScrollMotion } from "./scroll-motion.js";
 
