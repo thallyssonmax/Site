@@ -6,6 +6,7 @@
     <title>Thallysson Makcyel | Product Designer</title>
     <meta
       name="description"
+      data-i18n-content="meta.homeDescription"
       content="Product Designer com mais de 5 anos de experiência criando produtos digitais, SaaS, websites e experiências alinhadas a objetivos de negócio."
     />
     <link rel="canonical" href="https://thallyssonmax.com/" />
@@ -14,10 +15,11 @@
     <link rel="apple-touch-icon" href="/assets/social/webclip.png" />
     <meta name="robots" content="index, follow" />
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:locale" content="pt_BR" data-i18n-content="meta.ogLocale" />
     <meta property="og:title" content="Thallysson Makcyel | Product Designer" />
     <meta
       property="og:description"
+      data-i18n-content="meta.homeSocialDescription"
       content="Produtos digitais e websites úteis, bonitos e pensados para gerar resultado."
     />
     <meta property="og:url" content="https://thallyssonmax.com/" />
@@ -25,16 +27,18 @@
     <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="1800" />
     <meta property="og:image:height" content="945" />
-    <meta property="og:image:alt" content="Portfólio de Thallysson Makcyel, Product Designer" />
+    <meta property="og:image:alt" content="Portfólio de Thallysson Makcyel, Product Designer" data-i18n-content="meta.homeImageAlt" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Thallysson Makcyel | Product Designer" />
     <meta
       name="twitter:description"
+      data-i18n-content="meta.homeSocialDescription"
       content="Produtos digitais e websites úteis, bonitos e pensados para gerar resultado."
     />
     <meta name="twitter:image" content="https://thallyssonmax.com/assets/social/open-graph.jpg" />
-    <meta name="twitter:image:alt" content="Portfólio de Thallysson Makcyel, Product Designer" />
+    <meta name="twitter:image:alt" content="Portfólio de Thallysson Makcyel, Product Designer" data-i18n-content="meta.homeImageAlt" />
     <meta name="theme-color" content="#050505" />
+    <script src="/locale-init.js"></script>
     <link
       rel="preload"
       href="/assets/fonts/sf-pro-display-regular.woff2"
@@ -59,35 +63,47 @@
   </head>
   <body>
     <header class="site-header" data-nav-type="fix" data-motion>
-      <nav class="nav-shell" aria-label="Navegação principal">
+      <nav class="nav-shell" aria-label="Navegação principal" data-i18n-aria-label="nav.main">
         <div class="nav-fix" data-nav-panel="fix">
           <a class="brand" href="#inicio" aria-label="Thallysson Makcyel">
             <img src="/assets/navigation/logo.png" alt="" width="127" height="36" />
           </a>
-          <div class="nav-links nav-links-fix" aria-label="Seções do portfólio">
-            <a href="#sobre">Sobre</a>
-            <a href="#projetos">Projetos</a>
-            <a href="#servicos">Serviços</a>
-            <a href="#processo">Processo</a>
-            <a href="#depoimentos">Depoimentos</a>
+          <div class="nav-fixed-actions">
+            <div class="nav-links nav-links-fix" aria-label="Seções do portfólio" data-i18n-aria-label="nav.sections">
+              <a href="#sobre" data-i18n="nav.about">Sobre</a>
+              <a href="#projetos" data-i18n="nav.projects">Projetos</a>
+              <a href="#servicos" data-i18n="nav.services">Serviços</a>
+              <a href="#processo" data-i18n="nav.process">Processo</a>
+              <a href="#depoimentos" data-i18n="nav.testimonials">Depoimentos</a>
+            </div>
+            <div class="locale-switch" role="group" aria-label="Idioma" data-i18n-aria-label="nav.language">
+              <button type="button" data-locale="pt-BR" lang="pt-BR" aria-label="Português (Brasil)" aria-pressed="true">PT</button>
+              <span aria-hidden="true">/</span>
+              <button type="button" data-locale="en-US" lang="en-US" aria-label="English (US)" aria-pressed="false">EN</button>
+            </div>
           </div>
         </div>
         <div class="nav-scroll" data-nav-panel="scroll">
           <div class="nav-links nav-links-scroll" id="nav-links">
-            <a href="#inicio">Início</a>
-            <a href="#sobre">Sobre</a>
-            <a href="#projetos">Projetos</a>
-            <a href="#servicos">Serviços</a>
-            <a href="#processo">Processo</a>
-            <a href="#depoimentos">Depoimentos</a>
+            <a href="#inicio" data-i18n="nav.home">Início</a>
+            <a href="#sobre" data-i18n="nav.about">Sobre</a>
+            <a href="#projetos" data-i18n="nav.projects">Projetos</a>
+            <a href="#servicos" data-i18n="nav.services">Serviços</a>
+            <a href="#processo" data-i18n="nav.process">Processo</a>
+            <a href="#depoimentos" data-i18n="nav.testimonials">Depoimentos</a>
+          </div>
+          <div class="locale-switch" role="group" aria-label="Idioma" data-i18n-aria-label="nav.language">
+            <button type="button" data-locale="pt-BR" lang="pt-BR" aria-label="Português (Brasil)" aria-pressed="true">PT</button>
+            <span aria-hidden="true">/</span>
+            <button type="button" data-locale="en-US" lang="en-US" aria-label="English (US)" aria-pressed="false">EN</button>
           </div>
           <span class="nav-divider" aria-hidden="true"></span>
           <a class="nav-contact" href="https://wa.me/5538991308550" target="_blank" rel="noopener noreferrer">
             <img src="/assets/navigation/image-profile.png" alt="" width="28" height="28" />
-            Contato
+            <span data-i18n="nav.contact">Contato</span>
           </a>
         </div>
-        <a class="nav-project-back" href="#projetos" aria-label="Voltar para projetos">←</a>
+        <a class="nav-project-back" href="#projetos" aria-label="Voltar para projetos" data-i18n-aria-label="nav.backProjects">←</a>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">
           Menu
         </button>
@@ -104,28 +120,28 @@
           <div class="hero-content" data-motion>
             <p class="availability">
               <span aria-hidden="true"></span>
-              Disponível para oportunidades remotas e projetos freelance
+              <span data-i18n="home.hero.availability">Disponível para oportunidades remotas e projetos freelance</span>
             </p>
             <h1 id="hero-title">Thallysson Makcyel <span>Product Designer</span></h1>
-            <p class="hero-copy">
+            <p class="hero-copy" data-i18n="home.hero.copy">
               Ajudo empresas a transformar ideias e problemas em produtos digitais e websites úteis alinhados aos seus objetivos de negócio.
             </p>
-            <div class="cta-group" aria-label="Ações principais">
-              <a class="button button-primary" href="https://wa.me/5538991308550" target="_blank" rel="noopener noreferrer">Vamos conversar</a>
-              <a class="button button-ghost" href="#projetos">Ver projetos</a>
+            <div class="cta-group" aria-label="Ações principais" data-i18n-aria-label="home.hero.actions">
+              <a class="button button-primary" href="https://wa.me/5538991308550" target="_blank" rel="noopener noreferrer" data-i18n="home.hero.talk">Vamos conversar</a>
+              <a class="button button-ghost" href="#projetos" data-i18n="home.hero.viewProjects">Ver projetos</a>
             </div>
           </div>
           <div class="hero-meta" data-motion>
             <div class="hero-stats-content">
-              <div class="company-strip" aria-label="Empresas com que trabalhei">
+              <div class="company-strip" aria-label="Empresas com que trabalhei" data-i18n-aria-label="home.hero.companies">
                 <img src="/assets/logos/ehgol.jfif" alt="Ehgol" width="36" height="36" />
                 <img src="/assets/logos/max-design.jfif" alt="Max Design" width="36" height="36" />
                 <img src="/assets/logos/adminer.jfif" alt="Adminer" width="36" height="36" />
                 <img src="/assets/logos/frenet.jfif" alt="Frenet" width="36" height="36" />
               </div>
-              <p class="experience"><strong>+5 anos de</strong><span>experiência em produtos digitais e projetos web</span></p>
+              <p class="experience"><strong data-i18n="home.hero.years">+5 anos de</strong><span data-i18n="home.hero.experience">experiência em produtos digitais e projetos web</span></p>
             </div>
-            <div class="skills-marquee" aria-label="Especialidades">
+            <div class="skills-marquee" aria-label="Especialidades" data-i18n-aria-label="home.hero.specialties">
               <div>
                 <span>Product Design AI</span>
                 <span>UX Design</span>
@@ -146,22 +162,22 @@
       <section class="section about" id="sobre" aria-labelledby="about-title">
         <div class="container split-grid">
           <div class="section-heading" data-motion>
-            <p class="eyebrow">Sobre mim</p>
-            <h2 id="about-title">Muito além da interface.</h2>
+            <p class="eyebrow" data-i18n="home.about.eyebrow">Sobre mim</p>
+            <h2 id="about-title" data-i18n="home.about.title">Muito além da interface.</h2>
             <figure class="about-photo">
               <img src="/assets/about/thallysson-about-ai.png" alt="Thallysson Makcyel" width="357" height="370" loading="lazy" />
             </figure>
           </div>
           <div class="about-body" data-motion>
-            <p>Sou Product Designer com +5 anos de experiência criando produtos digitais, SaaS, plataformas, websites e soluções para logística.</p>
-            <p>Minha formação é em Psicologia, mas foi testando negócios durante a faculdade que descobri minha paixão por construir coisas que ajudam empresas a sair do papel, crescer e funcionar melhor. Entrei no Design por curiosidade, fiquei pela possibilidade de unir pessoas, negócio e tecnologia, e nunca mais parei.</p>
-            <p>Hoje, transformo problemas complexos em experiências simples, úteis e bem pensadas.</p>
-            <a class="button button-outline" href="/assets/about/thallysson-makcyel-curriculo.pdf" download>Baixar currículo</a>
-            <div class="skills-grid" aria-label="Competências">
-              <article><h3>Estratégia & Produto</h3><p>Discovery · Pesquisa · Definição de problemas · Métricas</p></article>
-              <article><h3>UX/UI Design</h3><p>Fluxos · Jornadas do usuário · UI Design · Prototipação funcional · Validação</p></article>
-              <article><h3>Design Systems & Colaboração</h3><p>Design Systems · DesignOps · Handoff · Produto · Engenharia</p></article>
-              <article><h3>Web Design</h3><p>Responsividade · SEO · Performance · Client-First</p></article>
+            <p data-i18n="home.about.p1">Sou Product Designer com +5 anos de experiência criando produtos digitais, SaaS, plataformas, websites e soluções para logística.</p>
+            <p data-i18n="home.about.p2">Minha formação é em Psicologia, mas foi testando negócios durante a faculdade que descobri minha paixão por construir coisas que ajudam empresas a sair do papel, crescer e funcionar melhor. Entrei no Design por curiosidade, fiquei pela possibilidade de unir pessoas, negócio e tecnologia, e nunca mais parei.</p>
+            <p data-i18n="home.about.p3">Hoje, transformo problemas complexos em experiências simples, úteis e bem pensadas.</p>
+            <a class="button button-outline" href="https://docs.google.com/document/d/1yiWhsKL1PKi3SgoZuD9Ry7fQVqD7MevOTp6d1SUwq78/edit?usp=sharing" target="_blank" rel="noopener noreferrer" data-i18n="home.about.resume" data-i18n-href="home.about.resumeUrl">Ver currículo</a>
+            <div class="skills-grid" aria-label="Competências" data-i18n-aria-label="home.about.skills">
+              <article><h3 data-i18n="home.about.strategyTitle">Estratégia & Produto</h3><p data-i18n="home.about.strategyBody">Discovery · Pesquisa · Definição de problemas · Métricas</p></article>
+              <article><h3>UX/UI Design</h3><p data-i18n="home.about.uxBody">Fluxos · Jornadas do usuário · UI Design · Prototipação funcional · Validação</p></article>
+              <article><h3 data-i18n="home.about.systemsTitle">Design Systems & Colaboração</h3><p data-i18n="home.about.systemsBody">Design Systems · DesignOps · Handoff · Produto · Engenharia</p></article>
+              <article><h3>Web Design</h3><p data-i18n="home.about.webBody">Responsividade · SEO · Performance · Client-First</p></article>
             </div>
           </div>
         </div>
@@ -171,73 +187,73 @@
         <div class="container">
           <div class="section-header-row" data-motion>
             <div>
-              <p class="eyebrow">Trabalhos selecionados</p>
-              <h2 id="projects-title">Projetos em destaque</h2>
-              <p class="section-description">Uma seleção de produtos digitais e websites que mostram como transformo problemas em soluções.</p>
+              <p class="eyebrow" data-i18n="home.projects.eyebrow">Trabalhos selecionados</p>
+              <h2 id="projects-title" data-i18n="home.projects.title">Projetos em destaque</h2>
+              <p class="section-description" data-i18n="home.projects.description">Uma seleção de produtos digitais e websites que mostram como transformo problemas em soluções.</p>
             </div>
-            <div class="filter-chips" aria-label="Filtrar projetos">
-              <button class="chip is-active" type="button" data-filter="all" aria-pressed="true">Todos</button>
+            <div class="filter-chips" aria-label="Filtrar projetos" data-i18n-aria-label="home.projects.filter">
+              <button class="chip is-active" type="button" data-filter="all" aria-pressed="true" data-i18n="home.projects.all">Todos</button>
               <button class="chip" type="button" data-filter="product" aria-pressed="false">Product Design</button>
               <button class="chip" type="button" data-filter="web" aria-pressed="false">Web Design</button>
-              <button class="chip" type="button" data-filter="experiment" aria-pressed="false">Experimentos</button>
+              <button class="chip" type="button" data-filter="experiment" aria-pressed="false" hidden data-i18n="home.projects.experiments">Experimentos</button>
             </div>
           </div>
           <div class="project-grid" id="project-grid" data-motion>
             <!-- Destinations: coming-soon has no link; detail opens locally; external opens in a new tab. -->
             <article class="project-card project-card-soon" data-category="product" data-destination="coming-soon">
               <div class="project-preview">
-                <img src="/assets/projects/Frenet/Frenet - cover [pt].png" alt="Identidade visual da Frenet sobre fundo violeta" width="2880" height="1620" loading="lazy" />
-                <span class="project-badge">Em breve</span>
+                <img src="/assets/projects/Frenet/Frenet - cover [pt].png" alt="Identidade visual da Frenet sobre fundo violeta" data-i18n-alt="home.projects.frenetAlt" width="2880" height="1620" loading="lazy" />
+                <span class="project-badge" data-i18n="home.projects.comingSoon">Em breve</span>
               </div>
-              <div class="project-info"><div><h3>Expandindo o produto</h3><p>Frenet · Logística</p></div></div>
+              <div class="project-info"><div><h3 data-i18n="home.projects.frenetTitle">Expandindo o produto</h3><p data-i18n="home.projects.frenetType">Frenet · Logística</p></div></div>
             </article>
             <article class="project-card" data-category="product" data-destination="detail">
-              <a class="project-link" href="/projects/adminer/" aria-label="Ver case: Criando a feature mais usada do produto">
+              <a class="project-link" href="/projects/adminer/" aria-label="Ver case: Criando a feature mais usada do produto" data-i18n-aria-label="home.projects.adminerLink">
                 <div class="project-preview">
-                  <img src="/assets/projects/Produtos quentes/adminer-home.jpg" alt="Interface da feature Produtos Quentes da Adminer" width="855" height="753" loading="lazy" />
+                  <img src="/assets/projects/Produtos quentes/adminer-home.jpg" alt="Interface da feature Produtos Quentes da Adminer" data-i18n-alt="home.projects.adminerAlt" width="855" height="753" loading="lazy" />
                   <span class="project-hover-icon" aria-hidden="true">↗</span>
                 </div>
-                <div class="project-info"><div><h3>Criando a feature mais usada do produto</h3><p>Adminer · SaaS</p></div><span class="project-corner-icon" aria-hidden="true">↗</span></div>
+                <div class="project-info"><div><h3 data-i18n="home.projects.adminerTitle">Criando a feature mais usada do produto</h3><p>Adminer · SaaS</p></div><span class="project-corner-icon" aria-hidden="true">↗</span></div>
               </a>
             </article>
             <article class="project-card" data-category="web" data-destination="external">
-              <a class="project-link" href="https://contactflow-case.webflow.io/" target="_blank" rel="noopener noreferrer" aria-label="Ver case ContactFlow em nova aba">
+              <a class="project-link" href="https://contactflow-case.webflow.io/" target="_blank" rel="noopener noreferrer" aria-label="Ver case ContactFlow em nova aba" data-i18n-aria-label="home.projects.contactLink">
                 <div class="project-preview">
-                  <img src="/assets/projects/Contact Flow/ContactFlow - conver [pt].png" alt="Website ContactFlow apresentado em notebook" width="1536" height="1024" loading="lazy" />
+                  <img src="/assets/projects/Contact Flow/ContactFlow - conver [pt].png" alt="Website ContactFlow apresentado em notebook" data-i18n-alt="home.projects.contactAlt" width="1536" height="1024" loading="lazy" />
                   <span class="project-hover-icon" aria-hidden="true">↗</span>
                 </div>
-                <div class="project-info"><div><h3>Marca forte. Site que vende.</h3><p>ContactFlow · Website</p></div><span class="project-corner-icon" aria-hidden="true">↗</span></div>
+                <div class="project-info"><div><h3 data-i18n="home.projects.contactTitle">Marca forte. Site que vende.</h3><p>ContactFlow · Website</p></div><span class="project-corner-icon" aria-hidden="true">↗</span></div>
               </a>
             </article>
             <article class="project-card" data-category="web" data-destination="external">
-              <a class="project-link" href="https://travel-case.webflow.io/" target="_blank" rel="noopener noreferrer" aria-label="Ver case Travel em nova aba">
+              <a class="project-link" href="https://travel-case.webflow.io/" target="_blank" rel="noopener noreferrer" aria-label="Ver case Travel em nova aba" data-i18n-aria-label="home.projects.travelLink">
                 <div class="project-preview">
-                  <img src="/assets/projects/Travel/Travel - cover [pt].png" alt="Website Travel apresentado em notebook" width="1672" height="941" loading="lazy" />
+                  <img src="/assets/projects/Travel/Travel - cover [pt].png" alt="Website Travel apresentado em notebook" data-i18n-alt="home.projects.travelAlt" width="1672" height="941" loading="lazy" />
                   <span class="project-hover-icon" aria-hidden="true">↗</span>
                 </div>
-                <div class="project-info"><div><h3>Do conceito à experiência digital web</h3><p>Travel · Website</p></div><span class="project-corner-icon" aria-hidden="true">↗</span></div>
+                <div class="project-info"><div><h3 data-i18n="home.projects.travelTitle">Do conceito à experiência digital web</h3><p>Travel · Website</p></div><span class="project-corner-icon" aria-hidden="true">↗</span></div>
               </a>
             </article>
           </div>
-          <p class="project-empty" data-project-empty hidden>Nenhum experimento publicado ainda.</p>
+          <p class="project-empty" data-project-empty hidden data-i18n="home.projects.empty">Nenhum experimento publicado ainda.</p>
           <div class="center-action" data-load-more-wrap>
-            <button class="small-button" type="button" data-load-more aria-controls="project-grid">Ver mais</button>
+            <button class="small-button" type="button" data-load-more aria-controls="project-grid" data-i18n="home.projects.more">Ver mais</button>
           </div>
         </div>
       </section>
 
       <section class="section services" id="servicos" aria-labelledby="services-title">
         <div class="container">
-          <p class="eyebrow">Serviços</p>
-          <h2 id="services-title">Como posso ajudar</h2>
+          <p class="eyebrow" data-i18n="home.services.eyebrow">Serviços</p>
+          <h2 id="services-title" data-i18n="home.services.title">Como posso ajudar</h2>
           <div class="service-list" data-motion>
             <article class="service-item">
               <div><span>01</span><h3>Product Design</h3></div>
-              <div><p>Ajudo times de produto a entender problemas, identificar oportunidades e criar experiências digitais alinhadas às necessidades dos usuários e aos objetivos do negócio.</p><small>Discovery · Pesquisa · UX · UI · Prototipação · Testes · Design Systems</small></div>
+              <div><p data-i18n="home.services.productBody">Ajudo times de produto a entender problemas, identificar oportunidades e criar experiências digitais alinhadas às necessidades dos usuários e aos objetivos do negócio.</p><small data-i18n="home.services.productSkills">Discovery · Pesquisa · UX · UI · Prototipação · Testes · Design Systems</small></div>
             </article>
             <article class="service-item">
               <div><span>02</span><h3>Web Design</h3></div>
-              <div><p>Projeto e construo websites pensados para unir experiência, performance e objetivos de negócio — do design à publicação.</p><small>Websites · Landing Pages · UX/UI · Responsividade · SEO · Performance · Client-First</small><strong>Sites estratégicos, bonitos e estruturados para crescer seu negócio!</strong></div>
+              <div><p data-i18n="home.services.webBody">Projeto e construo websites pensados para unir experiência, performance e objetivos de negócio — do design à publicação.</p><small data-i18n="home.services.webSkills">Websites · Landing Pages · UX/UI · Responsividade · SEO · Performance · Client-First</small><strong data-i18n="home.services.webHighlight">Sites estratégicos, bonitos e estruturados para crescer seu negócio!</strong></div>
             </article>
           </div>
         </div>
@@ -246,18 +262,18 @@
       <section class="section process" id="processo" aria-labelledby="process-title">
         <div class="container split-grid">
           <div class="section-heading sticky-copy" data-motion>
-            <p class="eyebrow">Processo</p>
-            <h2 id="process-title">Do problema à entrega.</h2>
-            <p class="section-description">Cada projeto pede uma abordagem diferente. Adapto o processo ao contexto, escopo e complexidade do desafio.</p>
+            <p class="eyebrow" data-i18n="nav.process">Processo</p>
+            <h2 id="process-title" data-i18n="home.process.title">Do problema à entrega.</h2>
+            <p class="section-description" data-i18n="home.process.description">Cada projeto pede uma abordagem diferente. Adapto o processo ao contexto, escopo e complexidade do desafio.</p>
           </div>
           <div class="steps-list" data-motion>
-            <article><span>01</span><div><h3>Entender</h3><p>Compreendo o contexto do projeto, os usuários, os objetivos e as restrições.</p></div></article>
-            <article><span>02</span><div><h3>Definir</h3><p>Estruturo o problema e priorizo oportunidades.</p></div></article>
-            <article><span>03</span><div><h3>Explorar</h3><p>Transformo ideias em fluxos, jornadas, arquitetura e wireframes.</p></div></article>
-            <article><span>04</span><div><h3>Validar</h3><p>Testo hipóteses, coleto feedbacks e refino a solução.</p></div></article>
-            <article><span>05</span><div><h3>Projetar</h3><p>Crio interfaces e protótipos de alta fidelidade.</p></div></article>
-            <article><span>06</span><div><h3>Construir</h3><p>Em produtos, colaboro com Engenharia. Em projetos web, construo com foco em responsividade, performance e qualidade técnica.</p></div></article>
-            <article><span>07</span><div><h3>Entregar</h3><p>Reviso, documento e preparo a solução para lançamento.</p></div></article>
+            <article><span>01</span><div><h3 data-i18n="home.process.step1Title">Entender</h3><p data-i18n="home.process.step1Body">Compreendo o contexto do projeto, os usuários, os objetivos e as restrições.</p></div></article>
+            <article><span>02</span><div><h3 data-i18n="home.process.step2Title">Definir</h3><p data-i18n="home.process.step2Body">Estruturo o problema e priorizo oportunidades.</p></div></article>
+            <article><span>03</span><div><h3 data-i18n="home.process.step3Title">Explorar</h3><p data-i18n="home.process.step3Body">Transformo ideias em fluxos, jornadas, arquitetura e wireframes.</p></div></article>
+            <article><span>04</span><div><h3 data-i18n="home.process.step4Title">Validar</h3><p data-i18n="home.process.step4Body">Testo hipóteses, coleto feedbacks e refino a solução.</p></div></article>
+            <article><span>05</span><div><h3 data-i18n="home.process.step5Title">Projetar</h3><p data-i18n="home.process.step5Body">Crio interfaces e protótipos de alta fidelidade.</p></div></article>
+            <article><span>06</span><div><h3 data-i18n="home.process.step6Title">Construir</h3><p data-i18n="home.process.step6Body">Em produtos, colaboro com Engenharia. Em projetos web, construo com foco em responsividade, performance e qualidade técnica.</p></div></article>
+            <article><span>07</span><div><h3 data-i18n="home.process.step7Title">Entregar</h3><p data-i18n="home.process.step7Body">Reviso, documento e preparo a solução para lançamento.</p></div></article>
           </div>
         </div>
       </section>
@@ -266,21 +282,21 @@
         <div class="container">
           <div class="section-header-row">
             <div>
-              <p class="eyebrow">Depoimentos</p>
-              <h2 id="testimonials-title">O que dizem sobre meu trabalho</h2>
+              <p class="eyebrow" data-i18n="home.testimonials.eyebrow">Depoimentos</p>
+              <h2 id="testimonials-title" data-i18n="home.testimonials.title">O que dizem sobre meu trabalho</h2>
             </div>
-            <div class="carousel-controls" aria-label="Controles dos depoimentos">
-              <button type="button" data-carousel="prev" aria-label="Depoimento anterior">←</button>
-              <button type="button" data-carousel="next" aria-label="Próximo depoimento">→</button>
+            <div class="carousel-controls" aria-label="Controles dos depoimentos" data-i18n-aria-label="home.testimonials.controls">
+              <button type="button" data-carousel="prev" aria-label="Depoimento anterior" data-i18n-aria-label="home.testimonials.previous">←</button>
+              <button type="button" data-carousel="next" aria-label="Próximo depoimento" data-i18n-aria-label="home.testimonials.next">→</button>
             </div>
           </div>
           <div class="testimonial-shell" data-motion>
             <div class="testimonial-viewport">
               <div class="testimonial-track">
-              <article class="testimonial-card"><span>“</span><blockquote>Thallysson é meu parceiro de trabalho há mais de 2 anos. Sua combinação de paciência, conhecimento técnico e olhar atento para a experiência do usuário transforma nossos projetos. Seu comprometimento com os detalhes eleva a qualidade dos produtos, e sua capacidade de equilibrar estética e funcionalidade é um diferencial que o torna um profissional excepcional.</blockquote><footer><img src="/assets/testimonials/amon-lima.jfif" alt="Amon Lima" width="46" height="46" loading="lazy" /><div><strong>Amon Lima</strong><p>Software Engineer · Trabalharam juntos</p></div></footer></article>
-              <article class="testimonial-card"><span>“</span><blockquote>Trabalhar com Thallysson foi um privilégio. Ele tem um olhar atento para o que realmente importa para o usuário e percebe detalhes que elevam a experiência. É responsável, confiável, proativo e está sempre buscando evoluir e ajudar o projeto a crescer. Além disso, é aberto ao diálogo, escuta sugestões e colabora de forma construtiva com o time.</blockquote><footer><div class="avatar-fallback">ST</div><div><strong>Stefano Tomei</strong><p>Software Engineer · Trabalharam juntos</p></div></footer></article>
-              <article class="testimonial-card"><span>“</span><blockquote>Thallysson, ou Max, como chamamos no time, é um designer excepcional! Com background em Psicologia, tem uma compreensão única do comportamento humano e usa essa perspectiva para criar experiências atraentes e intuitivas. É também muito questionador, trazendo constantemente pontos de melhoria para o produto e nossos processos. Tem sido um ótimo parceiro de trabalho!</blockquote><footer><img src="/assets/testimonials/sergio-felix.jfif" alt="Sergio Felix" width="46" height="46" loading="lazy" /><div><strong>Sergio Felix</strong><p>Product Manager · Trabalharam juntos</p></div></footer></article>
-              <article class="testimonial-card"><span>“</span><blockquote>Thallysson foi meu desenvolvedor web, designer e gerente de mídia social por dois anos. Sempre demonstrou profissionalismo, amplo conhecimento e capacidade de me auxiliar em diferentes áreas do empreendedorismo digital. É um daqueles profissionais raros: extremamente comprometido, responsável, confiável e capaz de contribuir em diferentes desafios de um projeto.</blockquote><footer><img src="/assets/testimonials/guil-santos.jfif" alt="Guil Santos" width="46" height="46" loading="lazy" /><div><strong>Guil Santos</strong><p>Empresário · Prestou serviço</p></div></footer></article>
+              <article class="testimonial-card"><span>“</span><blockquote data-i18n="home.testimonials.quote1">Thallysson é meu parceiro de trabalho há mais de 2 anos. Sua combinação de paciência, conhecimento técnico e olhar atento para a experiência do usuário transforma nossos projetos. Seu comprometimento com os detalhes eleva a qualidade dos produtos, e sua capacidade de equilibrar estética e funcionalidade é um diferencial que o torna um profissional excepcional.</blockquote><footer><img src="/assets/testimonials/amon-lima.jfif" alt="Amon Lima" width="46" height="46" loading="lazy" /><div><strong>Amon Lima</strong><p data-i18n="home.testimonials.workedTogether">Software Engineer · Trabalharam juntos</p></div></footer></article>
+              <article class="testimonial-card"><span>“</span><blockquote data-i18n="home.testimonials.quote2">Trabalhar com Thallysson foi um privilégio. Ele tem um olhar atento para o que realmente importa para o usuário e percebe detalhes que elevam a experiência. É responsável, confiável, proativo e está sempre buscando evoluir e ajudar o projeto a crescer. Além disso, é aberto ao diálogo, escuta sugestões e colabora de forma construtiva com o time.</blockquote><footer><div class="avatar-fallback">ST</div><div><strong>Stefano Tomei</strong><p data-i18n="home.testimonials.workedTogether">Software Engineer · Trabalharam juntos</p></div></footer></article>
+              <article class="testimonial-card"><span>“</span><blockquote data-i18n="home.testimonials.quote3">Thallysson, ou Max, como chamamos no time, é um designer excepcional! Com background em Psicologia, tem uma compreensão única do comportamento humano e usa essa perspectiva para criar experiências atraentes e intuitivas. É também muito questionador, trazendo constantemente pontos de melhoria para o produto e nossos processos. Tem sido um ótimo parceiro de trabalho!</blockquote><footer><img src="/assets/testimonials/sergio-felix.jfif" alt="Sergio Felix" width="46" height="46" loading="lazy" /><div><strong>Sergio Felix</strong><p data-i18n="home.testimonials.productManager">Product Manager · Trabalharam juntos</p></div></footer></article>
+              <article class="testimonial-card"><span>“</span><blockquote data-i18n="home.testimonials.quote4">Thallysson foi meu desenvolvedor web, designer e gerente de mídia social por dois anos. Sempre demonstrou profissionalismo, amplo conhecimento e capacidade de me auxiliar em diferentes áreas do empreendedorismo digital. É um daqueles profissionais raros: extremamente comprometido, responsável, confiável e capaz de contribuir em diferentes desafios de um projeto.</blockquote><footer><img src="/assets/testimonials/guil-santos.jfif" alt="Guil Santos" width="46" height="46" loading="lazy" /><div><strong>Guil Santos</strong><p data-i18n="home.testimonials.client">Empresário · Prestou serviço</p></div></footer></article>
               </div>
             </div>
           </div>
@@ -294,10 +310,10 @@
         </video>
         <div class="mesh-glow" aria-hidden="true"></div>
         <div class="final-content" data-motion>
-          <p class="eyebrow">Próximo projeto</p>
-          <h2 id="contact-title">Vamos transformar sua ideia em uma experiência digital?</h2>
-          <p>Seja para criar ou melhorar um produto ou website, vamos conversar sobre seu próximo projeto.</p>
-          <a class="button button-primary" href="https://wa.me/5538991308550" target="_blank" rel="noopener noreferrer">Chamar no whatsapp</a>
+          <p class="eyebrow" data-i18n="home.cta.eyebrow">Próximo projeto</p>
+          <h2 id="contact-title" data-i18n="home.cta.title">Vamos transformar sua ideia em uma experiência digital?</h2>
+          <p data-i18n="home.cta.body">Seja para criar ou melhorar um produto ou website, vamos conversar sobre seu próximo projeto.</p>
+          <a class="button button-primary" href="https://wa.me/5538991308550" target="_blank" rel="noopener noreferrer" data-i18n="home.cta.whatsapp">Chamar no whatsapp</a>
         </div>
       </section>
     </main>

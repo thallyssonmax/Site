@@ -1,5 +1,8 @@
 import { animate } from "motion";
+import { initI18n, t } from "./i18n.js";
 import { initScrollMotion } from "./scroll-motion.js";
+
+initI18n();
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -24,16 +27,24 @@ function updateNavigationType() {
   currentNavType = nextNavType;
 }
 
+function setMobileMenuOpen(isOpen) {
+  if (!navToggle) return;
+  navToggle.setAttribute("aria-expanded", String(isOpen));
+  navToggle.textContent = t(isOpen ? "nav.close" : "nav.menu");
+  navMenuPanel?.classList.toggle("is-open", isOpen);
+}
+
+window.addEventListener("localechange", () => {
+  setMobileMenuOpen(navToggle?.getAttribute("aria-expanded") === "true");
+});
+
 navToggle?.addEventListener("click", () => {
-  const isOpen = navToggle.getAttribute("aria-expanded") === "true";
-  navToggle.setAttribute("aria-expanded", String(!isOpen));
-  navMenuPanel?.classList.toggle("is-open", !isOpen);
+  setMobileMenuOpen(navToggle.getAttribute("aria-expanded") !== "true");
 });
 
 document.querySelectorAll(".nav-links a, .nav-contact").forEach((link) => {
   link.addEventListener("click", () => {
-    navToggle?.setAttribute("aria-expanded", "false");
-    navMenuPanel?.classList.remove("is-open");
+    setMobileMenuOpen(false);
   });
 });
 
@@ -49,7 +60,7 @@ const projectsPerPage = 4;
 let activeProjectFilter = "all";
 let visibleProjectLimit = projectsPerPage;
 
-function renderProjects() {
+function renderProjects(animateCards = false) {
   const matchingProjects = projects.filter((project) => {
     return activeProjectFilter === "all" || project.dataset.category === activeProjectFilter;
   });
@@ -60,7 +71,7 @@ function renderProjects() {
     const visible = matchesFilter && isWithinLimit;
     project.hidden = !visible;
 
-    if (!prefersReducedMotion && visible) {
+    if (animateCards && !prefersReducedMotion && visible) {
       animate(project, { opacity: [0, 1], y: [14, 0] }, { duration: 0.32, easing: "ease-out" });
     }
   });
@@ -80,13 +91,13 @@ chips.forEach((chip) => {
       item.classList.toggle("is-active", isActive);
       item.setAttribute("aria-pressed", String(isActive));
     });
-    renderProjects();
+    renderProjects(true);
   });
 });
 
 loadMoreButton?.addEventListener("click", () => {
   visibleProjectLimit += projectsPerPage;
-  renderProjects();
+  renderProjects(true);
 });
 
 renderProjects();

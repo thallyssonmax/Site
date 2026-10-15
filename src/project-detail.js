@@ -1,4 +1,7 @@
+import { initI18n, t } from "./i18n.js";
 import { initScrollMotion } from "./scroll-motion.js";
+
+initI18n();
 
 document.querySelector(".case-next video")?.play().catch(() => {});
 
@@ -11,13 +14,13 @@ if (gallery) {
   const dotsContainer = gallery.querySelector(".case-gallery-dots");
   const dots = slides.map((slide, index) => {
     slide.id = `${viewport.id}-image-${index + 1}`;
-    slide.setAttribute("aria-label", `${index + 1} de ${slides.length}`);
-    slide.querySelector("[data-gallery-zoom]")?.setAttribute("aria-label", `Ampliar imagem ${index + 1} de ${slides.length}`);
+    slide.setAttribute("aria-label", t("case.gallery.slide", { index: index + 1, total: slides.length }));
+    slide.querySelector("[data-gallery-zoom]")?.setAttribute("aria-label", t("case.gallery.enlarge", { index: index + 1, total: slides.length }));
 
     const dot = document.createElement("button");
     dot.type = "button";
     dot.dataset.galleryDot = String(index);
-    dot.setAttribute("aria-label", `Imagem ${index + 1} de ${slides.length}`);
+    dot.setAttribute("aria-label", t("case.gallery.dot", { index: index + 1, total: slides.length }));
     dot.setAttribute("aria-controls", slide.id);
     dotsContainer.append(dot);
     return dot;
@@ -32,6 +35,22 @@ if (gallery) {
   let activeIndex = 0;
   let scrollFrame = 0;
   let zoomTrigger = null;
+
+  function updateGalleryLanguage() {
+    slides.forEach((slide, index) => {
+      const values = { index: index + 1, total: slides.length };
+      slide.setAttribute("aria-label", t("case.gallery.slide", values));
+      slide.querySelector("[data-gallery-zoom]")?.setAttribute("aria-label", t("case.gallery.enlarge", values));
+      dots[index].setAttribute("aria-label", t("case.gallery.dot", values));
+    });
+    const zoomLabel = t(zoomDialog.classList.contains("is-zoomed") ? "case.gallery.zoomOut" : "case.gallery.zoomIn");
+    zoomButton.setAttribute("aria-label", zoomLabel);
+    zoomButton.title = zoomLabel;
+    if (zoomDialog.open && zoomTrigger) zoomImage.alt = zoomTrigger.querySelector("img").alt;
+  }
+
+  window.addEventListener("localechange", updateGalleryLanguage);
+  updateGalleryLanguage();
 
   const slideOffset = (index) => slides[index].offsetLeft - slides[0].offsetLeft;
 
@@ -94,6 +113,7 @@ if (gallery) {
       zoomImage.alt = image.alt;
       zoomDialog.classList.remove("is-zoomed");
       zoomButton.setAttribute("aria-pressed", "false");
+      updateGalleryLanguage();
       zoomView.scrollTo(0, 0);
       document.documentElement.classList.add("is-gallery-zoomed");
       zoomDialog.showModal();
@@ -103,8 +123,7 @@ if (gallery) {
   zoomButton.addEventListener("click", () => {
     const isZoomed = zoomDialog.classList.toggle("is-zoomed");
     zoomButton.setAttribute("aria-pressed", String(isZoomed));
-    zoomButton.setAttribute("aria-label", isZoomed ? "Afastar imagem" : "Aproximar imagem");
-    zoomButton.title = isZoomed ? "Afastar imagem" : "Aproximar imagem";
+    updateGalleryLanguage();
     zoomView.scrollTo(isZoomed ? (zoomView.scrollWidth - zoomView.clientWidth) / 2 : 0, 0);
   });
 

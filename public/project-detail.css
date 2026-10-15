@@ -19,9 +19,24 @@
 .case-nav-inner {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   width: 100%;
   height: 56px;
   padding: 5px 32px;
+}
+
+.case-nav .locale-switch {
+  pointer-events: auto;
+  color: #9b9b9b;
+}
+
+.case-nav .locale-switch button {
+  color: #707070;
+}
+
+.case-nav .locale-switch button[aria-pressed="true"],
+.case-nav .locale-switch button:hover {
+  color: var(--black-2);
 }
 
 .case-back {

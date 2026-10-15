@@ -3,57 +3,63 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Produtos Quentes: a feature mais usada da Adminer | Thallysson Makcyel</title>
-    <meta name="description" content="Como a feature Produtos Quentes simplificou a descoberta de oportunidades e se tornou a mais usada da Adminer." />
+    <title data-i18n="meta.casePageTitle">Produtos Quentes: a feature mais usada da Adminer | Thallysson Makcyel</title>
+    <meta name="description" content="Como a feature Produtos Quentes simplificou a descoberta de oportunidades e se tornou a mais usada da Adminer." data-i18n-content="meta.caseDescription" />
     <link rel="canonical" href="https://thallyssonmax.com/projects/adminer/" />
     <link rel="icon" type="image/png" sizes="48x48" href="/assets/social/favicon-bg-light.png" />
     <link rel="icon" type="image/png" sizes="48x48" href="/assets/social/favicon-bg-dark.png" media="(prefers-color-scheme: dark)" />
     <link rel="apple-touch-icon" href="/assets/social/webclip.png" />
     <meta name="theme-color" content="#ffffff" />
     <meta property="og:type" content="article" />
-    <meta property="og:locale" content="pt_BR" />
-    <meta property="og:title" content="Criando a feature mais usada do produto | Adminer" />
-    <meta property="og:description" content="O processo e os resultados por trás de Produtos Quentes, a feature mais usada da Adminer." />
+    <meta property="og:locale" content="pt_BR" data-i18n-content="meta.ogLocale" />
+    <meta property="og:title" content="Criando a feature mais usada do produto | Adminer" data-i18n-content="meta.caseSocialTitle" />
+    <meta property="og:description" content="O processo e os resultados por trás de Produtos Quentes, a feature mais usada da Adminer." data-i18n-content="meta.caseSocialDescription" />
     <meta property="og:url" content="https://thallyssonmax.com/projects/adminer/" />
     <meta property="og:image" content="https://thallyssonmax.com/assets/projects/Produtos%20quentes/adminer-detail.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
+    <script src="/locale-init.js"></script>
     <link rel="preload" href="/assets/fonts/sf-pro-display-regular.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="/styles.css" />
     <link rel="stylesheet" href="/project-detail.css" />
   </head>
   <body class="case-page">
     <header class="case-nav" data-motion>
-      <nav class="case-nav-inner" aria-label="Navegação do projeto">
-        <a class="case-back" href="/#projetos" aria-label="Voltar aos projetos">←</a>
+      <nav class="case-nav-inner" aria-label="Navegação do projeto" data-i18n-aria-label="case.nav.navigation">
+        <a class="case-back" href="/#projetos" aria-label="Voltar aos projetos" data-i18n-aria-label="case.nav.back">←</a>
+        <div class="locale-switch" role="group" aria-label="Idioma" data-i18n-aria-label="nav.language">
+          <button type="button" data-locale="pt-BR" lang="pt-BR" aria-label="Português (Brasil)" aria-pressed="true">PT</button>
+          <span aria-hidden="true">/</span>
+          <button type="button" data-locale="en-US" lang="en-US" aria-label="English (US)" aria-pressed="false">EN</button>
+        </div>
       </nav>
     </header>
 
     <main>
       <section class="case-hero" aria-labelledby="case-title">
-        <div class="case-container case-hero-copy" data-motion>
+        <div class="case-container case-hero-copy" data-motion data-motion-initial>
           <p class="case-eyebrow">Adminer · SaaS</p>
-          <h1 id="case-title">Criando a feature mais usada do produto</h1>
+          <h1 id="case-title" data-i18n="case.hero.title">Criando a feature mais usada do produto</h1>
         </div>
-        <figure class="case-container case-cover" data-motion>
-          <img src="/assets/projects/Produtos quentes/adminer-detail.jpg" alt="Interfaces de Produtos Quentes e detalhes do produto na Adminer" width="1800" height="1200" fetchpriority="high" />
+        <figure class="case-container case-cover" data-motion data-motion-initial>
+          <img src="/assets/projects/Produtos quentes/adminer-detail.jpg" alt="Interfaces de Produtos Quentes e detalhes do produto na Adminer" data-i18n-alt="case.hero.alt" width="1800" height="1200" fetchpriority="high" />
         </figure>
       </section>
 
       <section class="case-section" aria-labelledby="context-title">
         <div class="case-container case-split">
           <div class="case-heading" data-motion>
-            <p class="case-eyebrow">Sobre</p>
-            <h2 id="context-title">Contexto</h2>
+            <p class="case-eyebrow" data-i18n="case.context.eyebrow">Sobre</p>
+            <h2 id="context-title" data-i18n="case.context.title">Contexto</h2>
           </div>
           <div class="case-content" data-motion>
             <dl class="case-meta">
-              <div><dt>Função</dt><dd>UX/UI Designer</dd></div>
-              <div><dt>Duração</dt><dd>2 meses</dd></div>
-              <div><dt>Ano</dt><dd>2024</dd></div>
+              <div><dt data-i18n="case.context.role">Função</dt><dd>UX/UI Designer</dd></div>
+              <div><dt data-i18n="case.context.duration">Duração</dt><dd data-i18n="case.context.months">2 meses</dd></div>
+              <div><dt data-i18n="case.context.year">Ano</dt><dd>2024</dd></div>
             </dl>
-            <p>A Adminer é uma plataforma de inteligência competitiva para empreendedores digitais, com uma ampla biblioteca de anúncios para pesquisa de mercado. Apesar da quantidade de dados disponíveis, foi identificada uma necessidade específica entre os dropshippers: encontrar produtos com potencial de venda de forma mais simples e rápida.</p>
-            <p>A experiência existente exigia que esses usuários analisassem muitos anúncios e informações para identificar boas oportunidades, tornando a jornada complexa, principalmente para quem estava começando.</p>
-            <p>A partir de pesquisas com usuários e análises de comportamento, desenvolvemos <strong>Produtos Quentes</strong>: uma experiência focada em apresentar produtos previamente validados e informações estratégicas, reduzindo o esforço entre encontrar uma oportunidade e começar a vender.</p>
+            <p data-i18n="case.context.p1">A Adminer é uma plataforma de inteligência competitiva para empreendedores digitais, com uma ampla biblioteca de anúncios para pesquisa de mercado. Apesar da quantidade de dados disponíveis, foi identificada uma necessidade específica entre os dropshippers: encontrar produtos com potencial de venda de forma mais simples e rápida.</p>
+            <p data-i18n="case.context.p2">A experiência existente exigia que esses usuários analisassem muitos anúncios e informações para identificar boas oportunidades, tornando a jornada complexa, principalmente para quem estava começando.</p>
+            <p><span data-i18n="case.context.p3Before">A partir de pesquisas com usuários e análises de comportamento, desenvolvemos </span><strong>Produtos Quentes</strong><span data-i18n="case.context.p3After">: uma experiência focada em apresentar produtos previamente validados e informações estratégicas, reduzindo o esforço entre encontrar uma oportunidade e começar a vender.</span></p>
           </div>
         </div>
       </section>
@@ -61,24 +67,24 @@
       <section class="case-section case-section-tinted case-impact" aria-labelledby="impact-title">
         <div class="case-container">
           <div class="case-heading" data-motion>
-            <p class="case-eyebrow">Métricas & Resultados</p>
-            <h2 id="impact-title">Impacto do Projeto</h2>
+            <p class="case-eyebrow" data-i18n="case.impact.eyebrow">Métricas & Resultados</p>
+            <h2 id="impact-title" data-i18n="case.impact.title">Impacto do Projeto</h2>
           </div>
           <div class="case-card-grid" data-motion data-motion-stagger>
             <article class="case-card">
               <span class="case-card-number">01</span>
-              <p>A nova feature atacou uma das principais dores dos dropshippers e contribuiu para uma redução de mais de 20% na taxa de cancelamento desse público.</p>
-              <div><strong>−20% na redução dos cancelamentos</strong><span>Retenção de clientes</span></div>
+              <p data-i18n="case.impact.p1">A nova feature atacou uma das principais dores dos dropshippers e contribuiu para uma redução de mais de 20% na taxa de cancelamento desse público.</p>
+              <div><strong data-i18n="case.impact.metric1">−20% na redução dos cancelamentos</strong><span data-i18n="case.impact.label1">Retenção de clientes</span></div>
             </article>
             <article class="case-card">
               <span class="case-card-number">02</span>
-              <p>A nova experiência tornou-se a funcionalidade mais utilizada da plataforma, superando a Biblioteca de Anúncios nos seis meses analisados.</p>
-              <div><strong>11,34 mil utilizações</strong><span>Adoção da funcionalidade</span></div>
+              <p data-i18n="case.impact.p2">A nova experiência tornou-se a funcionalidade mais utilizada da plataforma, superando a Biblioteca de Anúncios nos seis meses analisados.</p>
+              <div><strong data-i18n="case.impact.metric2">11,34 mil utilizações</strong><span data-i18n="case.impact.label2">Adoção da funcionalidade</span></div>
             </article>
             <article class="case-card">
               <span class="case-card-number">03</span>
-              <p>A experiência alcançou nota média de 4,4 de 5 entre 756 usuários, com 84% das avaliações entre “Gostei” e “Amei”.</p>
-              <div><strong>4,4 de 5</strong><span>Satisfação dos dropshippers</span></div>
+              <p data-i18n="case.impact.p3">A experiência alcançou nota média de 4,4 de 5 entre 756 usuários, com 84% das avaliações entre “Gostei” e “Amei”.</p>
+              <div><strong data-i18n="case.impact.metric3">4,4 de 5</strong><span data-i18n="case.impact.label3">Satisfação dos dropshippers</span></div>
             </article>
           </div>
         </div>
@@ -87,15 +93,15 @@
       <section class="case-section" aria-labelledby="case-process-title">
         <div class="case-container case-split">
           <div class="case-heading sticky-copy" data-motion>
-            <p class="case-eyebrow">Metodologia aplicada</p>
-            <h2 id="case-process-title">Processo</h2>
+            <p class="case-eyebrow" data-i18n="case.process.eyebrow">Metodologia aplicada</p>
+            <h2 id="case-process-title" data-i18n="case.process.title">Processo</h2>
           </div>
           <ol class="case-process-list" data-motion data-motion-stagger>
-            <li><span>01</span><div><h3>Imersão & Pesquisa</h3><p>Reuni aprendizados de Customer Success e Vendas, analisei reclamações e atritos recorrentes e explorei concorrentes para compreender o problema e identificar oportunidades.</p></div></li>
-            <li><span>02</span><div><h3>Dados & Comportamento</h3><p>Analisei dados de uso no Mixpanel e sessões no Hotjar para entender o comportamento dos dropshippers e identificar padrões de uso e fricção na experiência.</p></div></li>
-            <li><span>03</span><div><h3>Entrevistas & Definição</h3><p>Conduzi mais de 30 entrevistas com clientes para aprofundar suas necessidades e priorizar os problemas com maior potencial de impacto para usuários e negócio.</p></div></li>
-            <li><span>04</span><div><h3>Exploração & Validação</h3><p>Explorei e prototipei diferentes soluções para simplificar a descoberta de produtos, validando as decisões e a viabilidade da experiência com PM e Tech Lead antes da implementação.</p></div></li>
-            <li><span>05</span><div><h3>Acompanhamento & Evolução</h3><p>Acompanhei com o PM a adoção e o uso da feature pelo Mixpanel, identificando comportamentos e oportunidades para orientar melhorias futuras.</p></div></li>
+            <li><span>01</span><div><h3 data-i18n="case.process.step1Title">Imersão & Pesquisa</h3><p data-i18n="case.process.step1Body">Reuni aprendizados de Customer Success e Vendas, analisei reclamações e atritos recorrentes e explorei concorrentes para compreender o problema e identificar oportunidades.</p></div></li>
+            <li><span>02</span><div><h3 data-i18n="case.process.step2Title">Dados & Comportamento</h3><p data-i18n="case.process.step2Body">Analisei dados de uso no Mixpanel e sessões no Hotjar para entender o comportamento dos dropshippers e identificar padrões de uso e fricção na experiência.</p></div></li>
+            <li><span>03</span><div><h3 data-i18n="case.process.step3Title">Entrevistas & Definição</h3><p data-i18n="case.process.step3Body">Conduzi mais de 30 entrevistas com clientes para aprofundar suas necessidades e priorizar os problemas com maior potencial de impacto para usuários e negócio.</p></div></li>
+            <li><span>04</span><div><h3 data-i18n="case.process.step4Title">Exploração & Validação</h3><p data-i18n="case.process.step4Body">Explorei e prototipei diferentes soluções para simplificar a descoberta de produtos, validando as decisões e a viabilidade da experiência com PM e Tech Lead antes da implementação.</p></div></li>
+            <li><span>05</span><div><h3 data-i18n="case.process.step5Title">Acompanhamento & Evolução</h3><p data-i18n="case.process.step5Body">Acompanhei com o PM a adoção e o uso da feature pelo Mixpanel, identificando comportamentos e oportunidades para orientar melhorias futuras.</p></div></li>
           </ol>
         </div>
       </section>
@@ -104,40 +110,40 @@
         <div class="case-container">
           <div class="case-result-header" data-motion>
             <div class="case-heading">
-              <p class="case-eyebrow">O Produto Finalizado</p>
-              <h2 id="result-title">O Resultado de Design</h2>
+              <p class="case-eyebrow" data-i18n="case.result.eyebrow">O Produto Finalizado</p>
+              <h2 id="result-title" data-i18n="case.result.title">O Resultado de Design</h2>
             </div>
             <div class="carousel-controls case-gallery-controls">
-              <button type="button" data-gallery-prev aria-label="Imagem anterior" aria-controls="case-gallery-viewport" disabled><span aria-hidden="true">←</span></button>
-              <button type="button" data-gallery-next aria-label="Próxima imagem" aria-controls="case-gallery-viewport"><span aria-hidden="true">→</span></button>
+              <button type="button" data-gallery-prev aria-label="Imagem anterior" data-i18n-aria-label="case.result.previous" aria-controls="case-gallery-viewport" disabled><span aria-hidden="true">←</span></button>
+              <button type="button" data-gallery-next aria-label="Próxima imagem" data-i18n-aria-label="case.result.next" aria-controls="case-gallery-viewport"><span aria-hidden="true">→</span></button>
             </div>
           </div>
           <div class="case-gallery" data-case-gallery data-motion>
             <div class="case-gallery-shell">
-              <div class="case-gallery-viewport" id="case-gallery-viewport" role="region" aria-roledescription="carrossel" aria-label="Resultados de design da Adminer" tabindex="0">
+              <div class="case-gallery-viewport" id="case-gallery-viewport" role="region" aria-roledescription="carrossel" data-i18n-aria-roledescription="case.result.carousel" aria-label="Resultados de design da Adminer" data-i18n-aria-label="case.result.region" tabindex="0">
                 <div class="case-gallery-track">
                   <figure class="case-gallery-item" role="group" aria-roledescription="slide" aria-label="1 de 3">
-                    <button class="case-gallery-image" type="button" data-gallery-zoom aria-label="Ampliar primeira imagem da galeria" aria-haspopup="dialog"><img src="/assets/projects/Produtos quentes/gallery-image-1.jpg" alt="Tela principal de Produtos Quentes com filtros e produtos em destaque" width="1095" height="1469" loading="lazy" decoding="async" /></button>
-                    <figcaption>A tela principal que permite uma visão geral dos produtos com maior potencial de venda.</figcaption>
+                    <button class="case-gallery-image" type="button" data-gallery-zoom aria-label="Ampliar primeira imagem da galeria" aria-haspopup="dialog"><img src="/assets/projects/Produtos quentes/gallery-image-1.jpg" alt="Tela principal de Produtos Quentes com filtros e produtos em destaque" data-i18n-alt="case.result.alt1" width="1095" height="1469" loading="lazy" decoding="async" /></button>
+                    <figcaption data-i18n="case.result.caption1">A tela principal que permite uma visão geral dos produtos com maior potencial de venda.</figcaption>
                   </figure>
                   <figure class="case-gallery-item" role="group" aria-roledescription="slide" aria-label="2 de 3">
-                    <button class="case-gallery-image" type="button" data-gallery-zoom aria-label="Ampliar segunda imagem da galeria" aria-haspopup="dialog"><img src="/assets/projects/Produtos quentes/gallery-image-2.jpg" alt="Detalhes de um produto e gráfico de desempenho na Adminer" width="1095" height="1469" loading="lazy" decoding="async" /></button>
-                    <figcaption>A tela de detalhes permite analisar informações detalhadas sobre o produto com potencial de venda.</figcaption>
+                    <button class="case-gallery-image" type="button" data-gallery-zoom aria-label="Ampliar segunda imagem da galeria" aria-haspopup="dialog"><img src="/assets/projects/Produtos quentes/gallery-image-2.jpg" alt="Detalhes de um produto e gráfico de desempenho na Adminer" data-i18n-alt="case.result.alt2" width="1095" height="1469" loading="lazy" decoding="async" /></button>
+                    <figcaption data-i18n="case.result.caption2">A tela de detalhes permite analisar informações detalhadas sobre o produto com potencial de venda.</figcaption>
                   </figure>
                   <figure class="case-gallery-item" role="group" aria-roledescription="slide" aria-label="3 de 3">
-                    <button class="case-gallery-image" type="button" data-gallery-zoom aria-label="Ampliar terceira imagem da galeria" aria-haspopup="dialog"><img src="/assets/projects/Produtos quentes/gallery-image-3.jpg" alt="Gráfico de desempenho e fornecedores relacionados ao produto" width="1095" height="1469" loading="lazy" decoding="async" /></button>
-                    <figcaption>Continuação da tela de detalhes do produto com potencial de venda.</figcaption>
+                    <button class="case-gallery-image" type="button" data-gallery-zoom aria-label="Ampliar terceira imagem da galeria" aria-haspopup="dialog"><img src="/assets/projects/Produtos quentes/gallery-image-3.jpg" alt="Gráfico de desempenho e fornecedores relacionados ao produto" data-i18n-alt="case.result.alt3" width="1095" height="1469" loading="lazy" decoding="async" /></button>
+                    <figcaption data-i18n="case.result.caption3">Continuação da tela de detalhes do produto com potencial de venda.</figcaption>
                   </figure>
                 </div>
               </div>
             </div>
-            <div class="case-gallery-dots" aria-label="Selecionar imagem"></div>
+            <div class="case-gallery-dots" aria-label="Selecionar imagem" data-i18n-aria-label="case.result.dots"></div>
           </div>
         </div>
       </section>
 
-      <dialog class="case-gallery-dialog" aria-label="Imagem ampliada do resultado de design">
-        <button class="case-gallery-dialog-close" type="button" aria-label="Fechar imagem ampliada" title="Fechar">&times;</button>
+      <dialog class="case-gallery-dialog" aria-label="Imagem ampliada do resultado de design" data-i18n-aria-label="case.result.dialog">
+        <button class="case-gallery-dialog-close" type="button" aria-label="Fechar imagem ampliada" data-i18n-aria-label="case.result.close" title="Fechar" data-i18n-title="nav.close">&times;</button>
         <div class="case-gallery-dialog-view">
           <button class="case-gallery-dialog-image" type="button" aria-label="Aproximar imagem" aria-pressed="false" title="Aproximar imagem">
             <img alt="" draggable="false" />
@@ -148,13 +154,13 @@
       <section class="case-section case-section-tinted case-lessons" aria-labelledby="lessons-title">
         <div class="case-container">
           <div class="case-heading" data-motion>
-            <p class="case-eyebrow">Reflexões finais</p>
-            <h2 id="lessons-title">Aprendizados</h2>
+            <p class="case-eyebrow" data-i18n="case.lessons.eyebrow">Reflexões finais</p>
+            <h2 id="lessons-title" data-i18n="case.lessons.title">Aprendizados</h2>
           </div>
           <div class="case-card-grid" data-motion data-motion-stagger>
-            <article class="case-card"><span class="case-card-number">01</span><p>Funcionalidades genéricas nem sempre resolvem dores reais. Quanto mais clara a necessidade, mais direcionada e relevante pode ser a solução.</p><h3>Especificidade gera valor</h3></article>
-            <article class="case-card"><span class="case-card-number">02</span><p>Ouvir usuários revela muitas dores. O desafio é identificar qual delas pode gerar mais valor para o cliente e impacto para o negócio.</p><h3>Priorizar o que gera impacto</h3></article>
-            <article class="case-card"><span class="case-card-number">03</span><p>O lançamento é apenas o começo. Acompanhar adoção e comportamento permite validar decisões e direcionar melhorias contínuas.</p><h3>Lançar, medir e evoluir</h3></article>
+            <article class="case-card"><span class="case-card-number">01</span><p data-i18n="case.lessons.p1">Funcionalidades genéricas nem sempre resolvem dores reais. Quanto mais clara a necessidade, mais direcionada e relevante pode ser a solução.</p><h3 data-i18n="case.lessons.title1">Especificidade gera valor</h3></article>
+            <article class="case-card"><span class="case-card-number">02</span><p data-i18n="case.lessons.p2">Ouvir usuários revela muitas dores. O desafio é identificar qual delas pode gerar mais valor para o cliente e impacto para o negócio.</p><h3 data-i18n="case.lessons.title2">Priorizar o que gera impacto</h3></article>
+            <article class="case-card"><span class="case-card-number">03</span><p data-i18n="case.lessons.p3">O lançamento é apenas o começo. Acompanhar adoção e comportamento permite validar decisões e direcionar melhorias contínuas.</p><h3 data-i18n="case.lessons.title3">Lançar, medir e evoluir</h3></article>
           </div>
         </div>
       </section>
@@ -164,11 +170,11 @@
       <div class="case-next section-dark">
         <video autoplay muted loop playsinline preload="auto" aria-hidden="true"><source src="/assets/hero/background-video.mp4" type="video/mp4" /></video>
         <div class="case-next-content" data-motion>
-          <p class="case-eyebrow">Próximo projeto</p>
-          <h2>Marca forte. Site que vende.</h2>
+          <p class="case-eyebrow" data-i18n="case.next.eyebrow">Próximo projeto</p>
+          <h2 data-i18n="case.next.title">Marca forte. Site que vende.</h2>
           <div class="case-next-actions">
-            <a class="button button-primary" href="https://contactflow-case.webflow.io/" target="_blank" rel="noopener noreferrer">Ver projeto</a>
-            <a class="button button-ghost" href="https://wa.me/5538991308550" target="_blank" rel="noopener noreferrer">Chamar no whatsapp</a>
+            <a class="button button-primary" href="https://contactflow-case.webflow.io/" target="_blank" rel="noopener noreferrer" data-i18n="case.next.view">Ver projeto</a>
+            <a class="button button-ghost" href="https://wa.me/5538991308550" target="_blank" rel="noopener noreferrer" data-i18n="case.next.whatsapp">Chamar no whatsapp</a>
           </div>
         </div>
       </div>
