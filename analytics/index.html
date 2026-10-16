@@ -16,12 +16,14 @@
     <button id="logout" class="small-button" hidden>Sair</button>
   </header>
   <main class="analytics-shell">
-    <section id="login" class="login-panel">
-      <span class="eyebrow">SEU PORTFÓLIO, EM PERSPECTIVA</span>
-      <h1>Por trás de<br />cada <span>visita.</span></h1>
-      <p>Entenda de onde as pessoas vêm, o que desperta interesse e onde a jornada termina.</p>
-      <div class="login-box"><span class="lock-icon" aria-hidden="true">↗</span><h2>Um olhar só seu.</h2><p>Entre com a conta Google autorizada para acessar os dados do portfólio. Este navegador lembrará seu acesso por até 30 dias.</p><div id="google-signin"></div><p id="login-status" role="status">Preparando acesso seguro…</p><button id="demo" class="button button-outline" hidden>Visualizar demonstração local ↗</button></div>
-      <a class="login-back" href="/">← Voltar ao portfólio</a>
+    <section id="login" class="login-panel" aria-labelledby="login-title">
+      <div class="login-box">
+        <h1 id="login-title">Entrar no analytics</h1>
+        <p>Acesse o painel com sua conta Google.</p>
+        <div id="google-signin"></div>
+        <p id="login-status" role="status">Verificando acesso…</p>
+        <button id="demo" class="button button-outline" hidden>Visualizar demonstração local ↗</button>
+      </div>
     </section>
     <div id="dashboard" hidden>
       <div id="demo-notice" class="notice" hidden>Demonstração local · Dados fictícios para visualizar a interface. Nenhum acesso real está sendo exibido.</div>

@@ -146,7 +146,7 @@ async function prepareGoogle(clientId) {
       } catch (error) { $('login-status').textContent = error.message; }
     } });
     google.accounts.id.renderButton($('google-signin'), { theme: 'outline', size: 'large', shape: 'pill', text: 'signin_with', locale: 'pt-BR' });
-    $('login-status').textContent = 'Acesso restrito à conta Google autorizada.';
+    $('login-status').textContent = '';
   })().catch(error => { googleReady = undefined; throw error; });
   return googleReady;
 }
