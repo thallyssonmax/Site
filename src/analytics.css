@@ -3,3 +3,12 @@
 @media(max-width:900px){.analytics-intro{align-items:flex-start;flex-direction:column;gap:20px}.metrics{grid-template-columns:repeat(2,1fr)}.funnel-row{grid-template-columns:160px 1fr 70px;gap:14px}.details-grid{gap:16px}.panel{padding:22px}.panel-heading{align-items:flex-start}}
 @media(max-width:600px){.analytics-header{gap:14px;padding:20px}.private-label{border:0;padding:0;font-size:12px}.private-label span{display:none}.back-link{font-size:12px}.analytics-shell{width:calc(100% - 32px)}.analytics-intro{padding:35px 0 26px}.analytics-intro h1{font-size:34px}.analytics-tabs{gap:22px;font-size:12px}.scope{line-height:1.6}#updated{width:100%;margin:4px 0 0 15px}.metrics{gap:10px}.metric{padding:18px;gap:15px}.metric strong{font-size:34px}.metric>span{font-size:12px}.metric small{font-size:11px}.panel-heading{flex-direction:column;gap:20px}.source-filter,.source-filter select{width:100%}.panel{padding:20px}.funnel-row{grid-template-columns:1fr 60px;gap:8px}.bar-track{grid-column:1;grid-row:2;height:32px}.stage-number{grid-column:2;grid-row:1/3}.funnel{gap:23px}.details-grid{grid-template-columns:1fr}.analytics-footer{flex-direction:column;gap:10px}.login-panel{margin:45px auto}.login-box{padding:24px}.filters{width:100%}.filters label{flex:1}.filters select{min-width:0;width:100%}.analytics-header .small-button{padding:6px 10px}.analytics-header .brand img{width:105px;height:auto}}
 @media(prefers-reduced-motion:reduce){.bar-fill{transition:none}}
+.analytics-tabs{overflow-x:auto;scrollbar-width:thin}
+.analytics-tabs button{flex:0 0 auto;min-height:44px;padding:0 2px 16px;background:transparent;border:0;border-bottom:2px solid transparent;color:var(--gray-2);font:inherit;white-space:nowrap}
+.analytics-tabs button:hover{color:var(--black)}
+.analytics-tabs button[aria-selected="true"]{color:var(--black);border-bottom-color:var(--black);font-weight:600}
+.details-grid{margin-top:0}
+.filters{flex-wrap:wrap}
+.filters label{flex:1 1 170px}
+.analytics-page [role="tabpanel"]:focus-visible{outline:2px solid var(--contrast);outline-offset:4px}
+@media(max-width:600px){.filters label{flex:1 1 140px}.filters .button{flex:1 1 120px}}

@@ -2,9 +2,37 @@ import './analytics.css';
 const $ = id => document.getElementById(id);
 const number = value => new Intl.NumberFormat('pt-BR').format(value);
 const percent = (value, total) => total ? `${(value / total * 100).toLocaleString('pt-BR', { maximumFractionDigits: 1 })}%` : '—';
+const tabIds = ['overview', 'journey', 'details'];
 let demo = false, generation = 0, googleReady;
 const labels = { '/': 'Página inicial', '/#inicio': 'Início', '/#sobre': 'Sobre mim', '/#projetos': 'Projetos', '/#servicos': 'Serviços', '/#processo': 'Processo', '/#depoimentos': 'Depoimentos', '/#contato': 'Contato', '/projects/adminer': 'Case Adminer' };
 $('year').textContent = new Date().getFullYear();
+function selectTab(id, { updateHistory = false, focus = false } = {}) {
+  const selectedId = tabIds.includes(id) ? id : 'overview';
+  for (const tabId of tabIds) {
+    const selected = tabId === selectedId;
+    $(`tab-${tabId}`).setAttribute('aria-selected', String(selected));
+    $(`tab-${tabId}`).tabIndex = selected ? 0 : -1;
+    $(`${tabId}-panel`).hidden = !selected;
+  }
+  if (updateHistory && location.hash !== `#${selectedId}`) history.pushState(null, '', `#${selectedId}`);
+  if (focus) $(`tab-${selectedId}`).focus();
+}
+function selectTabFromUrl() { selectTab(location.hash.slice(1), { focus: document.activeElement?.getAttribute('role') === 'tab' }); }
+document.querySelectorAll('.analytics-tabs [role="tab"]').forEach(tab => {
+  tab.addEventListener('click', () => selectTab(tab.dataset.tab, { updateHistory: true }));
+  tab.addEventListener('keydown', event => {
+    const index = tabIds.indexOf(tab.dataset.tab);
+    const next = event.key === 'ArrowRight' ? (index + 1) % tabIds.length
+      : event.key === 'ArrowLeft' ? (index - 1 + tabIds.length) % tabIds.length
+      : event.key === 'Home' ? 0 : event.key === 'End' ? tabIds.length - 1 : -1;
+    if (next < 0) return;
+    event.preventDefault();
+    selectTab(tabIds[next], { updateHistory: true, focus: true });
+  });
+});
+window.addEventListener('popstate', selectTabFromUrl);
+window.addEventListener('hashchange', selectTabFromUrl);
+selectTabFromUrl();
 function table(id, rows, total) {
   const target = $(id); target.replaceChildren();
   if (!rows.length) { const empty = document.createElement('div'); empty.className = 'empty'; empty.textContent = 'Nenhum dado registrado neste período.'; target.append(empty); return; }
@@ -84,9 +112,6 @@ $('logout').addEventListener('click', async () => {
 $('refresh').addEventListener('click', loadReport);
 $('period').addEventListener('change', () => { $('source').value = ''; loadReport(); });
 $('source').addEventListener('change', loadReport);
-document.querySelectorAll('.analytics-tabs a').forEach(link => link.addEventListener('click', () => {
-  document.querySelectorAll('.analytics-tabs a').forEach(item => item.classList.toggle('active', item === link));
-}));
 if (import.meta.env.DEV) { $('demo').hidden = false; $('demo').addEventListener('click', () => { demo = true; showDashboard(); }); }
 async function initialize() {
   try {

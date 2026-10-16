@@ -25,32 +25,38 @@
     </section>
     <div id="dashboard" hidden>
       <div id="demo-notice" class="notice" hidden>Demonstração local · Dados fictícios para visualizar a interface. Nenhum acesso real está sendo exibido.</div>
-      <section class="analytics-intro" id="overview">
+      <section class="analytics-intro">
         <div><span class="eyebrow">PORTFÓLIO ANALYTICS</span><h1>Cada visita conta<span>.</span></h1><p>Da descoberta ao contato. Entenda a jornada de quem chega até você.</p></div>
-        <div class="filters"><label>Período<select id="period"><option value="7">Últimos 7 dias</option><option value="30" selected>Últimos 30 dias</option><option value="90">Últimos 90 dias</option></select></label><button id="refresh" class="button button-outline">Atualizar ↻</button></div>
+        <div class="filters"><label>Período<select id="period"><option value="7">Últimos 7 dias</option><option value="30" selected>Últimos 30 dias</option><option value="90">Últimos 90 dias</option></select></label><label>Origem<select id="source"><option value="">Todas as origens</option></select></label><button id="refresh" class="button button-outline">Atualizar ↻</button></div>
       </section>
-      <nav class="analytics-tabs" aria-label="Seções do analytics"><a class="active" href="#overview">Visão geral</a><a href="#journey">Funil da jornada</a><a href="#details">Origens e saídas</a></nav>
+      <div class="analytics-tabs" role="tablist" aria-label="Seções do analytics">
+        <button id="tab-overview" type="button" role="tab" aria-controls="overview-panel" aria-selected="true" tabindex="0" data-tab="overview">Visão geral</button>
+        <button id="tab-journey" type="button" role="tab" aria-controls="journey-panel" aria-selected="false" tabindex="-1" data-tab="journey">Funil da jornada</button>
+        <button id="tab-details" type="button" role="tab" aria-controls="details-panel" aria-selected="false" tabindex="-1" data-tab="details">Origens e saídas</button>
+      </div>
       <div class="scope"><span class="scope-dot"></span> Todos os números representam <strong>usuários únicos</strong><span id="updated"></span></div>
       <p id="report-status" role="status"></p>
       <div id="report-content">
-        <section class="metrics" aria-label="Resumo do período">
+        <section class="metrics" id="overview-panel" role="tabpanel" aria-labelledby="tab-overview" tabindex="0">
           <article class="metric"><span>Visitantes únicos</span><strong id="total">—</strong><small>Pessoas por navegador no período</small></article>
           <article class="metric"><span>Chegaram a um projeto</span><strong id="project-total">—</strong><small>Usuários únicos na terceira etapa</small></article>
           <article class="metric"><span>Clicaram em contato</span><strong id="contact-total">—</strong><small>Inclui contato direto, sem ver projetos</small></article>
           <article class="metric accent"><span>Conversão do funil</span><strong id="conversion">—</strong><small>Da entrada ao clique em contato</small></article>
         </section>
-        <section class="panel journey-panel" id="journey">
-          <div class="panel-heading"><div><span class="eyebrow">O CAMINHO ATÉ VOCÊ</span><h2>Funil da jornada</h2><p>Quem avança, quem fica e onde o interesse vira intenção.</p></div><label class="source-filter">Origem<select id="source"><option value="">Todas as origens</option></select></label></div>
+        <section class="panel journey-panel" id="journey-panel" role="tabpanel" aria-labelledby="tab-journey" tabindex="0" hidden>
+          <div class="panel-heading"><div><span class="eyebrow">O CAMINHO ATÉ VOCÊ</span><h2>Funil da jornada</h2><p>Quem avança, quem fica e onde o interesse vira intenção.</p></div></div>
           <div id="funnel" class="funnel" aria-label="Funil por usuários únicos"></div>
           <div class="funnel-note"><span aria-hidden="true">↳</span><p>Cada usuário conta uma vez por etapa. Para avançar, precisa seguir a sequência na mesma visita. Um clique em contato indica intenção, não uma conversa confirmada.</p></div>
         </section>
-        <section class="details-grid" id="details">
-          <article class="panel"><span class="eyebrow">01 / DESCOBERTA</span><h2>De onde vêm</h2><p>Primeira origem de cada usuário no período.</p><div id="sources"></div></article>
-          <article class="panel"><span class="eyebrow">02 / INTERESSE</span><h2>Por onde passam</h2><p>Páginas e seções vistas por usuários únicos.</p><div id="pages"></div></article>
-          <article class="panel"><span class="eyebrow">03 / ÚLTIMO PASSO</span><h2>Onde a jornada termina</h2><p>Última interação de cada usuário após 30 minutos sem atividade.</p><div id="exits"></div><small id="active-note"></small></article>
-          <article class="panel"><span class="eyebrow">04 / PRÓXIMO DESTINO</span><h2>Para onde vão</h2><p>Cliques em projetos, contato e links externos.</p><div id="outbound"></div></article>
+        <section id="details-panel" role="tabpanel" aria-labelledby="tab-details" tabindex="0" hidden>
+          <div class="details-grid">
+            <article class="panel"><span class="eyebrow">01 / DESCOBERTA</span><h2>De onde vêm</h2><p>Distribuição de todas as origens no período, mesmo com o filtro ativo.</p><div id="sources"></div></article>
+            <article class="panel"><span class="eyebrow">02 / INTERESSE</span><h2>Por onde passam</h2><p>Páginas e seções vistas por usuários únicos.</p><div id="pages"></div></article>
+            <article class="panel"><span class="eyebrow">03 / ÚLTIMO PASSO</span><h2>Onde a jornada termina</h2><p>Última interação de cada usuário após 30 minutos sem atividade.</p><div id="exits"></div><small id="active-note"></small></article>
+            <article class="panel"><span class="eyebrow">04 / PRÓXIMO DESTINO</span><h2>Para onde vão</h2><p>Cliques em projetos, contato e links externos.</p><div id="outbound"></div></article>
+          </div>
+          <details class="methodology"><summary>Como ler estes números <span>+</span></summary><p><strong>Usuário único:</strong> um identificador aleatório neste navegador por até 90 dias. Outro dispositivo, navegação anônima ou apagar os dados pode contar a mesma pessoa novamente. Não identifica a pessoa nem combina dispositivos.</p><p><strong>Origem:</strong> utm_source quando informado; caso contrário, domínio de referência. “Direto” também inclui referências que o navegador não informou. O filtro usa a primeira origem observada no período e aplica a mesma seleção ao funil e às listas de páginas e saídas.</p><p><strong>Jornada:</strong> visita termina após 30 minutos sem atividade. Saída é uma inferência da última interação registrada, não a detecção exata de fechar a aba. A lista usa somente a última visita de cada usuário. Ler um case externo não é observável; apenas o clique de saída é contado.</p><p><strong>Contagem:</strong> listas de páginas e destinos podem somar mais que o total: um usuário pode visitar vários. Recarregar a página não aumenta usuários únicos. Bloqueadores, Do Not Track e indisponibilidade da coleta podem reduzir os dados. O histórico começa após a ativação.</p></details>
         </section>
-        <details class="methodology"><summary>Como ler estes números <span>+</span></summary><p><strong>Usuário único:</strong> um identificador aleatório neste navegador por até 90 dias. Outro dispositivo, navegação anônima ou apagar os dados pode contar a mesma pessoa novamente. Não identifica a pessoa nem combina dispositivos.</p><p><strong>Origem:</strong> utm_source quando informado; caso contrário, domínio de referência. “Direto” também inclui referências que o navegador não informou. O filtro usa a primeira origem observada no período e aplica a mesma seleção ao funil e às listas de páginas e saídas.</p><p><strong>Jornada:</strong> visita termina após 30 minutos sem atividade. Saída é uma inferência da última interação registrada, não a detecção exata de fechar a aba. A lista usa somente a última visita de cada usuário. Ler um case externo não é observável; apenas o clique de saída é contado.</p><p><strong>Contagem:</strong> listas de páginas e destinos podem somar mais que o total: um usuário pode visitar vários. Recarregar a página não aumenta usuários únicos. Bloqueadores, Do Not Track e indisponibilidade da coleta podem reduzir os dados. O histórico começa após a ativação.</p></details>
       </div>
       <footer class="analytics-footer"><span>Thallysson Makcyel © <span id="year"></span></span><span>Horário de Brasília · Acesso privado</span></footer>
     </div>
