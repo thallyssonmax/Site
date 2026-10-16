@@ -62,7 +62,8 @@ as funções da pasta `api`; use `vercel dev` com as variáveis para testar o fl
 Neon Free provisionado (neon-apricot-river) e conectado ao projeto site. Tabela e índices
 criados em 15/10/2026. DATABASE_URL e ANALYTICS_ORIGIN estão configuradas na Vercel.
 O cliente Google Web foi criado no projeto Audio generate, e GOOGLE_CLIENT_ID foi configurado
-em produção. O commit 42ee285 foi publicado pela Vercel e está READY no domínio
-thallyssonmax.com. Ainda é necessário adicionar thallyssondesigner@gmail.com como usuário
-de teste na Google Auth Platform e validar o fluxo real de login, coleta e relatório.
+em produção. O portfólio e o painel estão publicados no domínio thallyssonmax.com.
+thallyssondesigner@gmail.com é o único usuário de teste na Google Auth Platform.
+Em 16/10/2026 foram validados a coleta real no Neon, o bloqueio do relatório sem login
+e o funil autenticado em produção.
 
