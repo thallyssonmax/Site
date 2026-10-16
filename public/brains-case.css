@@ -25,11 +25,6 @@
 .brains-validation {
   border-top: 1px solid var(--border-light);
   background: var(--white);
-  padding-bottom: 48px;
-}
-
-.brains-page .case-lessons {
-  padding-top: 48px;
 }
 
 .brains-dashboard {
@@ -60,14 +55,6 @@
 
   .brains-dashboard {
     margin-top: 32px;
-  }
-
-  .brains-validation {
-    padding-bottom: 32px;
-  }
-
-  .brains-page .case-lessons {
-    padding-top: 32px;
   }
 
   .brains-lessons-grid {
