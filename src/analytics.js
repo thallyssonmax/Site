@@ -2,7 +2,7 @@ import './analytics.css';
 const $ = id => document.getElementById(id);
 const number = value => new Intl.NumberFormat('pt-BR').format(value);
 const percent = (value, total) => total ? `${(value / total * 100).toLocaleString('pt-BR', { maximumFractionDigits: 1 })}%` : '—';
-let token = '', demo = false, generation = 0;
+let demo = false, generation = 0, googleReady;
 const labels = { '/': 'Página inicial', '/#inicio': 'Início', '/#sobre': 'Sobre mim', '/#projetos': 'Projetos', '/#servicos': 'Serviços', '/#processo': 'Processo', '/#depoimentos': 'Depoimentos', '/#contato': 'Contato', '/projects/adminer': 'Case Adminer' };
 $('year').textContent = new Date().getFullYear();
 function table(id, rows, total) {
@@ -51,10 +51,10 @@ async function loadReport() {
       const { demoReport } = await import('./analytics-demo.js');
       data = demoReport(Number($('period').value), $('source').value);
     } else {
-      const response = await fetch(`/api/analytics/report?period=${$('period').value}&source=${encodeURIComponent($('source').value)}`, { headers: { Authorization: `Bearer ${token}` }, cache: 'no-store' });
+      const response = await fetch(`/api/analytics/report?period=${$('period').value}&source=${encodeURIComponent($('source').value)}`, { credentials: 'same-origin', cache: 'no-store' });
       data = await response.json();
       if (!response.ok) {
-        if (response.status === 401 || response.status === 403) logout(data.error);
+        if (response.status === 401 || response.status === 403) showLoggedOut(data.error);
         throw new Error(data.error || 'Não foi possível carregar os dados.');
       }
     }
@@ -65,11 +65,22 @@ async function loadReport() {
   finally { if (current === generation) $('refresh').disabled = false; }
 }
 function showDashboard() { $('login').hidden = true; $('dashboard').hidden = false; $('logout').hidden = false; $('demo-notice').hidden = !demo; loadReport(); }
-function logout(message = 'Acesso encerrado. Entre novamente para continuar.') {
-  generation++; token = ''; demo = false; $('dashboard').hidden = true; $('login').hidden = false; $('logout').hidden = true;
-  $('report-content').hidden = true; $('login-status').textContent = message; window.google?.accounts.id.disableAutoSelect();
+function showLoggedOut(message = 'Acesso encerrado. Entre novamente para continuar.') {
+  generation++; demo = false; $('dashboard').hidden = true; $('login').hidden = false; $('logout').hidden = true;
+  $('report-content').hidden = true; $('login-status').textContent = message;
+  prepareGoogle().catch(error => { $('login-status').textContent = error.message; });
 }
-$('logout').addEventListener('click', () => logout());
+$('logout').addEventListener('click', async () => {
+  if (demo) { showLoggedOut(); return; }
+  $('logout').disabled = true;
+  try {
+    const response = await fetch('/api/analytics/session', { method: 'DELETE', credentials: 'same-origin' });
+    if (!response.ok) throw new Error('Não foi possível encerrar sua sessão. Tente novamente.');
+    window.google?.accounts.id.disableAutoSelect();
+    showLoggedOut();
+  } catch (error) { $('report-status').textContent = error.message; }
+  finally { $('logout').disabled = false; }
+});
 $('refresh').addEventListener('click', loadReport);
 $('period').addEventListener('change', () => { $('source').value = ''; loadReport(); });
 $('source').addEventListener('change', loadReport);
@@ -83,11 +94,35 @@ async function initialize() {
     if (!response.ok || !response.headers.get('content-type')?.includes('application/json')) throw new Error('O acesso estará disponível após a configuração do login Google e do banco de dados.');
     const config = await response.json();
     if (!config.clientId || !config.configured) throw new Error('O acesso estará disponível após a configuração do login Google e do banco de dados.');
+    const session = await fetch('/api/analytics/session', { credentials: 'same-origin', cache: 'no-store' });
+    if (session.ok) { demo = false; showDashboard(); return; }
+    if (session.status !== 401) throw new Error('Não foi possível verificar sua sessão. Recarregue a página para tentar novamente.');
+    await prepareGoogle(config.clientId);
+  } catch (error) { $('login-status').textContent = error.message; }
+}
+async function prepareGoogle(clientId) {
+  if (googleReady) return googleReady;
+  googleReady = (async () => {
+    if (!clientId) {
+      const response = await fetch('/api/analytics/config', { cache: 'no-store' });
+      const config = await response.json();
+      clientId = config.clientId;
+    }
+    if (!clientId) throw new Error('Login Google ainda não configurado.');
     const script = document.createElement('script'); script.src = 'https://accounts.google.com/gsi/client'; script.async = true;
     await new Promise((resolve, reject) => { script.onload = resolve; script.onerror = () => reject(new Error('Não foi possível carregar o Google. Recarregue a página para tentar novamente.')); document.head.append(script); });
-    google.accounts.id.initialize({ client_id: config.clientId, auto_select: false, callback: async result => { token = result.credential; demo = false; showDashboard(); } });
+    google.accounts.id.initialize({ client_id: clientId, auto_select: false, callback: async result => {
+      $('login-status').textContent = 'Validando sua conta…';
+      try {
+        const response = await fetch('/api/analytics/session', { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ credential: result.credential }) });
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || 'Não foi possível entrar.');
+        demo = false; showDashboard();
+      } catch (error) { $('login-status').textContent = error.message; }
+    } });
     google.accounts.id.renderButton($('google-signin'), { theme: 'outline', size: 'large', shape: 'pill', text: 'signin_with', locale: 'pt-BR' });
     $('login-status').textContent = 'Acesso restrito à conta Google autorizada.';
-  } catch (error) { $('login-status').textContent = error.message; }
+  })().catch(error => { googleReady = undefined; throw error; });
+  return googleReady;
 }
 initialize();

@@ -1,11 +1,15 @@
 import { OAuth2Client } from 'google-auth-library';
 import { database } from '../../server/analytics-db.js';
 import { isOwner, summarize } from '../../server/analytics-model.js';
+import { hasSession } from '../../server/analytics-session.js';
 const google = new OAuth2Client();
 export default async function handler(req, res) {
   res.setHeader('Cache-Control', 'private, no-store');
-  res.setHeader('Vary', 'Authorization');
+  res.setHeader('Vary', 'Cookie, Authorization');
   if (req.method !== 'GET') return res.status(405).end();
+  try {
+    if (await hasSession(req)) return reportForOwner(req, res);
+  } catch { return res.status(503).json({ error: 'Não foi possível verificar sua sessão.' }); }
   const token = req.headers.authorization?.match(/^Bearer (\S+)$/)?.[1];
   if (!token) return res.status(401).json({ error: 'Entre com sua conta Google.' });
   if (!process.env.GOOGLE_CLIENT_ID) return res.status(503).json({ error: 'Login Google ainda não configurado.' });
@@ -13,6 +17,9 @@ export default async function handler(req, res) {
     const ticket = await google.verifyIdToken({ idToken: token, audience: process.env.GOOGLE_CLIENT_ID });
     if (!isOwner(ticket.getPayload())) return res.status(403).json({ error: 'Esta conta não tem acesso ao analytics.' });
   } catch { return res.status(401).json({ error: 'Seu acesso expirou. Entre novamente.' }); }
+  return reportForOwner(req, res);
+}
+async function reportForOwner(req, res) {
   const period = Number(req.query.period || 30);
   if (![7, 30, 90].includes(period)) return res.status(400).json({ error: 'Período inválido.' });
   const source = typeof req.query.source === 'string' ? req.query.source.slice(0,80) : '';

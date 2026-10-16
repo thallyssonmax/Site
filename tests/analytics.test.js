@@ -3,6 +3,8 @@ import assert from 'node:assert/strict';
 import { isOwner, summarize, validEvent, OWNER } from '../server/analytics-model.js';
 import report from '../api/analytics/report.js';
 import collect from '../api/analytics/collect.js';
+import session from '../api/analytics/session.js';
+import { COOKIE_NAME, clearedSessionCookie, sessionCookie, sessionHash, sessionToken } from '../server/analytics-session.js';
 import { OAuth2Client } from 'google-auth-library';
 const now = Date.parse('2026-10-15T12:00:00Z');
 const e = (visitor, kind, target = '', seconds = 0, session = 'one', source = 'Direto') => ({ visitor_id: visitor, session_id: session, kind, target, source, path: '/', created_at: new Date(now - 3600000 + seconds * 1000).toISOString() });
@@ -51,4 +53,30 @@ test('collector rejects foreign origins and invalid requests',async()=>{
   for (const [req,status] of [[{method:'GET',headers:{}},405],[{method:'POST',headers:{origin:'https://other.test'}},403],[{method:'POST',headers:{origin:'https://thallyssonmax.com','content-type':'application/json'},body:{}},400]]) {
     const res=response(); await collect(req,res); assert.equal(res.code,status);
   }
+});
+test('persistent session uses an opaque host-only cookie and accepts only valid session IDs', () => {
+  const token = 'A'.repeat(43);
+  assert.equal(sessionToken({ headers: { cookie: `other=1; ${COOKIE_NAME}=${token}` } }), token);
+  assert.equal(sessionToken({ headers: { cookie: `${COOKIE_NAME}=invalid` } }), '');
+  assert.equal(sessionToken({ cookies: { [COOKIE_NAME]: token }, headers: {} }), token);
+  assert.notEqual(sessionHash(token), token);
+  assert.match(sessionCookie(token), /Max-Age=2592000; Path=\/; Secure; HttpOnly; SameSite=Strict/);
+  assert.match(clearedSessionCookie(), /Max-Age=0; Path=\/; Secure; HttpOnly; SameSite=Strict/);
+});
+test('session endpoint denies cross-origin creation and an unapproved Google account', async () => {
+  const previous = process.env.GOOGLE_CLIENT_ID; process.env.GOOGLE_CLIENT_ID = 'test-client';
+  const original = OAuth2Client.prototype.verifyIdToken;
+  const base = { method: 'POST', headers: { origin: 'https://thallyssonmax.com', 'content-type': 'application/json' }, body: { credential: 'valid-token' } };
+  try {
+    const foreign = response(); await session({ ...base, headers: { ...base.headers, origin: 'https://other.test' } }, foreign); assert.equal(foreign.code, 403);
+    OAuth2Client.prototype.verifyIdToken = async () => ({ getPayload: () => ({ email: 'other@gmail.com', email_verified: true, sub: 'other' }) });
+    const outsider = response(); await session(base, outsider); assert.equal(outsider.code, 403); assert.equal(outsider.headers['Set-Cookie'], undefined);
+    OAuth2Client.prototype.verifyIdToken = async () => { throw new Error('bad signature'); };
+    const invalid = response(); await session(base, invalid); assert.equal(invalid.code, 401);
+  } finally { OAuth2Client.prototype.verifyIdToken = original; if (previous === undefined) delete process.env.GOOGLE_CLIENT_ID; else process.env.GOOGLE_CLIENT_ID = previous; }
+});
+test('session endpoint has no access without a cookie and clears it on logout', async () => {
+  const missing = response(); await session({ method: 'GET', headers: {} }, missing); assert.equal(missing.code, 401);
+  const loggedOut = response(); await session({ method: 'DELETE', headers: { origin: 'https://thallyssonmax.com' } }, loggedOut);
+  assert.equal(loggedOut.code, 204); assert.match(loggedOut.headers['Set-Cookie'], /Max-Age=0/);
 });

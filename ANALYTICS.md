@@ -50,8 +50,11 @@ as funções da pasta `api`; use `vercel dev` com as variáveis para testar o fl
   30 minutos sem eventos. Heartbeat de aba visível mantém leitores ativos.
 - Horário de Brasília, períodos de 7/30/90 dias incluindo hoje; sem dados retroativos.
 - Do Not Track e `localStorage['portfolio-analytics-opt-out']='1'` desativam coleta.
-- Google ID token fica somente em memória e é verificado a cada consulta (assinatura,
-  audiência, emissor, expiração e e-mail verificado exato). Recarregar requer novo login.
+- O Google ID token é validado no servidor no momento da entrada (assinatura,
+  audiência, emissor, expiração e e-mail verificado exato). O navegador recebe um cookie
+  `Secure`, `HttpOnly`, `SameSite=Strict` com ID aleatório, válido por até 30 dias.
+  O banco guarda apenas o hash desse ID; recarregar a página restaura a sessão e
+  clicar em “Sair” a revoga. O token Google não é salvo no navegador.
 - Endpoints de coleta são públicos por necessidade. Validação, origem, filtro de bots,
   limite por visitante e idempotência reduzem ruído, mas não impedem eventos forjados
   por scripts externos. Aplicar rate limiting na Vercel para tráfego abusivo.
