@@ -1,0 +1,77 @@
+.brains-hero h1 {
+  max-width: 920px;
+}
+
+.brains-page .case-cover {
+  aspect-ratio: 3 / 2;
+}
+
+.brains-page .case-meta {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.brains-process {
+  border-top: 0;
+}
+
+.brains-mvp .case-content p:first-child {
+  color: var(--black-2);
+  font-size: 20px;
+  line-height: 1.45;
+}
+
+.brains-validation {
+  border-top: 1px solid var(--border-light);
+  background: var(--white);
+  padding-bottom: 48px;
+}
+
+.brains-page .case-lessons {
+  padding-top: 48px;
+}
+
+.brains-dashboard {
+  margin: 48px 0 0;
+}
+
+.brains-dashboard figcaption {
+  padding-top: 12px;
+  color: var(--gray-2);
+  font-size: 12px;
+  line-height: 14px;
+  text-align: center;
+}
+
+.brains-lessons-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 640px) {
+  .brains-page .case-meta {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .brains-mvp .case-content p:first-child {
+    font-size: 18px;
+  }
+
+  .brains-dashboard {
+    margin-top: 32px;
+  }
+
+  .brains-validation {
+    padding-bottom: 32px;
+  }
+
+  .brains-page .case-lessons {
+    padding-top: 32px;
+  }
+
+  .brains-lessons-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+

@@ -4,7 +4,7 @@ const number = value => new Intl.NumberFormat('pt-BR').format(value);
 const percent = (value, total) => total ? `${(value / total * 100).toLocaleString('pt-BR', { maximumFractionDigits: 1 })}%` : '—';
 const tabIds = ['overview', 'journey', 'details'];
 let demo = false, generation = 0, googleReady;
-const labels = { '/': 'Página inicial', '/#inicio': 'Início', '/#sobre': 'Sobre mim', '/#projetos': 'Projetos', '/#servicos': 'Serviços', '/#processo': 'Processo', '/#depoimentos': 'Depoimentos', '/#contato': 'Contato', '/projects/adminer': 'Case Adminer' };
+const labels = { '/': 'Página inicial', '/#inicio': 'Início', '/#sobre': 'Sobre mim', '/#projetos': 'Projetos', '/#servicos': 'Serviços', '/#processo': 'Processo', '/#depoimentos': 'Depoimentos', '/#contato': 'Contato', '/projects/adminer': 'Case Adminer', '/projects/brains': 'Case Brains' };
 $('year').textContent = new Date().getFullYear();
 function selectTab(id, { updateHistory = false, focus = false } = {}) {
   const selectedId = tabIds.includes(id) ? id : 'overview';

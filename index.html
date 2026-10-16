@@ -195,7 +195,7 @@
               <button class="chip is-active" type="button" data-filter="all" aria-pressed="true" data-i18n="home.projects.all">Todos</button>
               <button class="chip" type="button" data-filter="product" aria-pressed="false">Product Design</button>
               <button class="chip" type="button" data-filter="web" aria-pressed="false">Web Design</button>
-              <button class="chip" type="button" data-filter="experiment" aria-pressed="false" hidden data-i18n="home.projects.experiments">Experimentos</button>
+              <button class="chip" type="button" data-filter="experiment" aria-pressed="false" data-i18n="home.projects.experiments">Experimentos</button>
             </div>
           </div>
           <div class="project-grid" id="project-grid" data-motion>
@@ -206,6 +206,16 @@
                 <span class="project-badge" data-i18n="home.projects.comingSoon">Em breve</span>
               </div>
               <div class="project-info"><div><h3 data-i18n="home.projects.frenetTitle">Expandindo o produto</h3><p data-i18n="home.projects.frenetType">Frenet · Logística</p></div></div>
+            </article>
+            <article class="project-card" data-category="experiment" data-destination="detail">
+              <a class="project-link" href="/projects/brains/" aria-label="Ver case Brains" data-i18n-aria-label="home.projects.brainsLink">
+                <div class="project-preview">
+                  <img src="/assets/projects/Brains/home-image-brains.png" alt="Close de um celular exibindo o ícone do app Brains" data-i18n-alt="home.projects.brainsAlt" width="1254" height="1254" loading="lazy" decoding="async" />
+                  <span class="project-badge" data-i18n="home.projects.inProgress">Em andamento</span>
+                  <span class="project-hover-icon" aria-hidden="true">↗</span>
+                </div>
+                <div class="project-info"><div><h3 data-i18n="home.projects.brainsTitle">Aprender inglês. Construir com IA.</h3><p data-i18n="home.projects.brainsType">Brains · Experimento pessoal</p></div><span class="project-corner-icon" aria-hidden="true">↗</span></div>
+              </a>
             </article>
             <article class="project-card" data-category="product" data-destination="detail">
               <a class="project-link" href="/projects/adminer/" aria-label="Ver case: Criando a feature mais usada do produto" data-i18n-aria-label="home.projects.adminerLink">
@@ -235,7 +245,7 @@
               </a>
             </article>
           </div>
-          <p class="project-empty" data-project-empty hidden data-i18n="home.projects.empty">Nenhum experimento publicado ainda.</p>
+          <p class="project-empty" data-project-empty hidden data-i18n="home.projects.empty">Nenhum projeto nesta categoria.</p>
           <div class="center-action" data-load-more-wrap>
             <button class="small-button" type="button" data-load-more aria-controls="project-grid" data-i18n="home.projects.more">Ver mais</button>
           </div>

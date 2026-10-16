@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title data-i18n="meta.brainsPageTitle">Brains: um MVP para aprender inglês e construir com IA | Thallysson Makcyel</title>
+    <meta name="description" content="Um experimento pessoal de repetição espaçada, IA generativa e validação de produto ainda em andamento." data-i18n-content="meta.brainsDescription" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/assets/social/favicon-bg-light.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/assets/social/favicon-bg-dark.png" media="(prefers-color-scheme: dark)" />
+    <link rel="apple-touch-icon" href="/assets/social/webclip.png" />
+    <meta name="theme-color" content="#ffffff" />
+    <script src="/locale-init.js"></script>
+    <link rel="preload" href="/assets/fonts/sf-pro-display-regular.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/project-detail.css" />
+    <link rel="stylesheet" href="/brains-case.css" />
+  </head>
+  <body class="case-page brains-page">
+    <header class="case-nav" data-motion>
+      <nav class="case-nav-inner" aria-label="Navegação do projeto" data-i18n-aria-label="case.nav.navigation">
+        <a class="case-back" href="/#projetos" aria-label="Voltar aos projetos" data-i18n-aria-label="case.nav.back">←</a>
+        <div class="locale-switch" role="group" aria-label="Idioma" data-i18n-aria-label="nav.language">
+          <button type="button" data-locale="pt-BR" lang="pt-BR" aria-label="Português (Brasil)" aria-pressed="true">PT</button>
+          <span aria-hidden="true">/</span>
+          <button type="button" data-locale="en-US" lang="en-US" aria-label="English (US)" aria-pressed="false">EN</button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="case-hero brains-hero" aria-labelledby="case-title">
+        <div class="case-container case-hero-copy" data-motion data-motion-initial>
+          <p class="case-eyebrow" data-i18n="brains.hero.eyebrow">Brains · Experimento pessoal</p>
+          <h1 id="case-title" data-i18n="brains.hero.title">Aprender inglês. Construir com IA.</h1>
+        </div>
+        <figure class="case-container case-cover" data-motion data-motion-initial>
+          <img src="/assets/projects/Brains/detail-cover-image-brains.png" alt="Três mockups do Brains mostrando progresso diário, áreas de estudo e revisão de um card" data-i18n-alt="brains.hero.alt" width="1536" height="1024" fetchpriority="high" />
+        </figure>
+      </section>
+
+      <section class="case-section" aria-labelledby="brains-context-title">
+        <div class="case-container case-split">
+          <div class="case-heading" data-motion>
+            <p class="case-eyebrow" data-i18n="brains.context.eyebrow">Sobre o projeto</p>
+            <h2 id="brains-context-title" data-i18n="brains.context.title">Contexto</h2>
+          </div>
+          <div class="case-content" data-motion>
+            <dl class="case-meta">
+              <div><dt data-i18n="brains.summary.goal">Objetivo</dt><dd data-i18n="brains.summary.goalValue">Aprender vocabulário em inglês</dd></div>
+              <div><dt data-i18n="brains.summary.approach">Abordagem</dt><dd data-i18n="brains.summary.approachValue">Repetição espaçada + IA</dd></div>
+              <div><dt data-i18n="brains.summary.stage">Momento</dt><dd data-i18n="brains.summary.stageValue">MVP em uso e validação inicial</dd></div>
+            </dl>
+            <p data-i18n="brains.context.p1">Criei o Brains para ampliar meu vocabulário em inglês e conseguir lembrar das palavras ao longo do tempo. O app usa repetição espaçada para transformar o estudo em uma prática recorrente.</p>
+            <p data-i18n="brains.context.p2">Ao mesmo tempo, apliquei minha experiência em pesquisa e Product Discovery para definir hipóteses e escopo. O aprendizado novo foi explorar como o Codex e a IA generativa podem ampliar a construção de produtos digitais.</p>
+            <p data-i18n="brains.context.p3">É um projeto pessoal, sem fins lucrativos e em validação inicial. Ainda não há resultados conclusivos; este case registra as decisões e perguntas em aberto do MVP. Ele está aberto para teste, e seu uso ajuda a orientar os próximos passos.</p>
+            <a class="button button-primary brains-try-button" href="https://heybrains.app/" target="_blank" rel="noopener noreferrer" aria-label="Testar o Brains em nova aba" data-i18n-aria-label="brains.validation.ctaLabel" data-i18n="brains.validation.ctaButton">Testar o Brains</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section case-section-tinted brains-process" aria-labelledby="brains-process-title">
+        <div class="case-container case-split">
+          <div class="case-heading sticky-copy" data-motion>
+            <p class="case-eyebrow" data-i18n="brains.process.eyebrow">Da ideia ao MVP</p>
+            <h2 id="brains-process-title" data-i18n="brains.process.title">Como construí</h2>
+          </div>
+          <ol class="case-process-list" data-motion data-motion-stagger>
+            <li><span>01</span><div><h3 data-i18n="brains.process.step1Title">Partir de um problema meu</h3><p data-i18n="brains.process.step1Body">Estruturei o estudo em cards e revisões espaçadas para praticar vocabulário em vez de apenas acumular palavras novas.</p></div></li>
+            <li><span>02</span><div><h3 data-i18n="brains.process.step2Title">Aplicar discovery e aprender Codex</h3><p data-i18n="brains.process.step2Body">Usei meu repertório em pesquisa e Product Discovery para investigar o problema, formular hipóteses e escolher o que testar. Com o Codex, aprendi a explorar alternativas e construir o MVP sem delegar a ele as decisões de produto.</p></div></li>
+            <li><span>03</span><div><h3 data-i18n="brains.process.step3Title">Aplicar IA ao aprendizado</h3><p data-i18n="brains.process.step3Body">Integrei geração de frases de exemplo e imagens contextuais aos cards. A intenção é dar significado às palavras e ajudar a recordá-las em situações de uso.</p></div></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="case-section brains-mvp" aria-labelledby="brains-mvp-title">
+        <div class="case-container case-split">
+          <div class="case-heading" data-motion>
+            <p class="case-eyebrow" data-i18n="brains.mvp.eyebrow">Escolha de escopo</p>
+            <h2 id="brains-mvp-title" data-i18n="brains.mvp.title">MVP antes do visual</h2>
+          </div>
+          <div class="case-content" data-motion>
+            <p data-i18n="brains.mvp.p1">Este ainda não é um produto final. Nesta fase, priorizei colocar o fluxo principal em uso e aprender com ele. Não investi em identidade visual nem em um refinamento amplo da interface para não deixar minhas preferências de design conduzirem uma solução antes da validação.</p>
+            <p data-i18n="brains.mvp.p2">Isso não significa ignorar a experiência: o MVP precisa ser utilizável. O acabamento visual e uma evolução mais profunda de UX virão depois, orientados pelos problemas que as pessoas encontrarem e pelo valor que demonstrarem receber.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section brains-validation" aria-labelledby="brains-validation-title">
+        <div class="case-container">
+          <div class="case-heading" data-motion>
+            <p class="case-eyebrow" data-i18n="brains.validation.eyebrow">O foco agora</p>
+            <h2 id="brains-validation-title" data-i18n="brains.validation.title">Atrair, observar, validar</h2>
+          </div>
+          <div class="case-card-grid" data-motion data-motion-stagger>
+            <article class="case-card"><span class="case-card-number">01</span><p data-i18n="brains.validation.p1">Estou convidando mais pessoas a usar o Brains para sair da perspectiva de um único usuário: eu.</p><h3 data-i18n="brains.validation.title1">Atrair usuários</h3></article>
+            <article class="case-card"><span class="case-card-number">02</span><p data-i18n="brains.validation.p2">Construí um dashboard de Analytics para acompanhar o funil de entrada até o app e, separadamente, a criação de cards e as revisões.</p><h3 data-i18n="brains.validation.title2">Entender o uso</h3></article>
+            <article class="case-card"><span class="case-card-number">03</span><p data-i18n="brains.validation.p3">Com uma base de uso maior, quero identificar atritos, validar o valor do produto e definir seu rumo antes de investir na próxima camada de UX e visual.</p><h3 data-i18n="brains.validation.title3">Decidir com evidências</h3></article>
+          </div>
+          <figure class="brains-dashboard" data-motion>
+            <div class="case-cover brains-dashboard-image">
+              <img src="/assets/projects/Brains/detail-dashboard-image-brains.png" alt="Dashboard Analytics do Brains com contas, áreas, cards, atividade e gráfico de crescimento" data-i18n-alt="brains.validation.dashboardAlt" width="1536" height="1024" loading="lazy" decoding="async" />
+            </div>
+            <figcaption data-i18n="brains.validation.dashboardCaption">O painel reúne crescimento, funil de entrada e atividade para orientar o que melhorar no MVP.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="case-section case-lessons" aria-labelledby="brains-lessons-title">
+        <div class="case-container">
+          <div class="case-heading" data-motion>
+            <p class="case-eyebrow" data-i18n="brains.lessons.eyebrow">Reflexões até aqui</p>
+            <h2 id="brains-lessons-title" data-i18n="brains.lessons.title">Aprendizados em construção</h2>
+          </div>
+          <div class="case-card-grid brains-lessons-grid" data-motion data-motion-stagger>
+            <article class="case-card"><span class="case-card-number">01</span><p data-i18n="brains.lessons.p1">Minha experiência em pesquisa e discovery orienta as perguntas e os critérios. A IA amplia a exploração e a produção de conteúdo, mas as decisões de produto continuam minhas.</p><h3 data-i18n="brains.lessons.title1">IA como ferramenta, não direção</h3></article>
+            <article class="case-card"><span class="case-card-number">02</span><p data-i18n="brains.lessons.p2">Lançar algo pequeno e medir desde cedo é uma forma de descobrir quais problemas merecem esforço de design, em vez de presumir que já conheço as respostas.</p><h3 data-i18n="brains.lessons.title2">Aprender antes de polir</h3></article>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <div class="case-next section-dark">
+        <video autoplay muted loop playsinline preload="auto" aria-hidden="true"><source src="/assets/hero/background-video.mp4" type="video/mp4" /></video>
+        <div class="case-next-content" data-motion>
+          <p class="case-eyebrow" data-i18n="case.next.eyebrow">Próximo projeto</p>
+          <h2 data-i18n="case.hero.title">Criando a feature mais usada do produto</h2>
+          <div class="case-next-actions">
+            <a class="button button-primary" href="/projects/adminer/" data-i18n="case.next.view">Ver projeto</a>
+            <a class="button button-ghost" href="https://wa.me/5538991308550" target="_blank" rel="noopener noreferrer" data-i18n="case.next.whatsapp">Chamar no whatsapp</a>
+          </div>
+        </div>
+      </div>
+      <div class="site-footer"><p>© 2026 Thallysson Makcyel · CNPJ: 42.321.980/0001-74</p><p>Product Design AI · UX Design · UI Design · Web Design · Figma</p></div>
+    </footer>
+    <script type="module" src="/src/project-detail.js"></script>
+  </body>
+</html>
