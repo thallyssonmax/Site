@@ -37,7 +37,7 @@ export const en = {
   "home.about.p2": "I studied Psychology, but experimenting with businesses during college led me to discover my passion for building things that help companies get started, grow, and work better. Curiosity brought me into design; the chance to connect people, business, and technology made me stay.",
   "home.about.p3": "Today, I turn complex problems into simple, useful, and thoughtful experiences.",
   "home.about.resume": "View resume",
-  "home.about.resumeUrl": "https://docs.google.com/document/d/1VBh_s1-yBdQPcyERWs5YSH7QN6LF9sJi9DunaxPZASw/edit?usp=sharing",
+  "home.about.resumeUrl": "/assets/about/thallysson-makcyel-resume-en-us.pdf",
   "home.about.skills": "Skills",
   "home.about.strategyTitle": "Strategy & Product",
   "home.about.strategyBody": "Discovery · Research · Problem definition · Metrics",
