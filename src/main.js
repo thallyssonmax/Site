@@ -53,7 +53,7 @@ window.addEventListener("scroll", updateNavigationType, { passive: true });
 updateNavigationType();
 
 const chips = document.querySelectorAll("[data-filter]");
-const projects = Array.from(document.querySelectorAll(".project-card"));
+const projects = Array.from(document.querySelectorAll(".project-card:not([data-project-hidden])"));
 const loadMoreButton = document.querySelector("[data-load-more]");
 const loadMoreWrap = document.querySelector("[data-load-more-wrap]");
 const projectEmpty = document.querySelector("[data-project-empty]");
